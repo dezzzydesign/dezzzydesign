@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dezzzy | Thumbnail Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020202; color: white; margin: 0; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
+        .font-brand { font-family: 'Montserrat', sans-serif; }
+        
+        .white-flare {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Очень медленный фон */
+        .marquee { display: flex; overflow: hidden; user-select: none; gap: 3rem; transform: rotate(-3deg) scale(1.1); width: 100vw; pointer-events: none; }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 3rem; animation: scroll 180s linear infinite; pointer-events: none; }
+        .marquee-content.reverse { animation-direction: reverse; }
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+        .marquee-img { 
+            width: 384px; height: 208px; object-fit: cover; border-radius: 2rem; 
+            opacity: 0.3; transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+            cursor: pointer; pointer-events: auto; position: relative;
+        }
+        .marquee-img:hover { opacity: 0.7; transform: scale(1.05); z-index: 50; }
+
+        .cursor-trail {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            filter: blur(30px);
+        }
+        
+        #navbar { transition: all 0.5s ease; transform: translateY(-100%); opacity: 0; }
+        #navbar.visible { transform: translateY(0); opacity: 1; }
+
+        #main-logo-container { transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        .logo-hidden { opacity: 0; transform: scale(0.5) translateY(-50px); pointer-events: none; }
+
+        /* Portfolio */
+        .portfolio-row-container { position: relative; width: 100%; }
+        .portfolio-row { display: flex; gap: 2rem; overflow-x: auto; padding: 1rem 2rem 3rem 2rem; scrollbar-width: none; scroll-behavior: smooth; }
+        .portfolio-row::-webkit-scrollbar { display: none; }
+        .portfolio-item { flex: 0 0 450px; aspect-ratio: 16/9; cursor: pointer; border-radius: 1.5rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.5s ease; position: relative; }
+        .portfolio-item:hover { transform: scale(1.03); border-color: rgba(255,255,255,0.4); box-shadow: 0 0 40px rgba(255,255,255,0.1); }
+
+        .scroll-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 60px; height: 60px; background: rgba(0,0,0,0.5); backdrop-blur: 20px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            z-index: 20; border: 1px solid rgba(255,255,255,0.1); color: white;
+            opacity: 0; transition: all 0.3s ease;
+        }
+        .portfolio-row-container:hover .scroll-btn { opacity: 1; }
+        .scroll-btn:hover { background: white; color: black; }
+        .scroll-btn.left { left: 20px; }
+        .scroll-btn.right { right: 20px; }
+
+        #lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 200; display: none; align-items: center; justify-content: center; padding: 2rem; cursor: zoom-out; }
+        #lightbox img { max-width: 95%; max-height: 95%; border-radius: 1rem; }
+
+        /* Слайдер До/После */
+        .slider-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; }
+        .slider-container { 
+            position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 2.5rem; 
+            overflow: hidden; cursor: ew-resize; border: 1px solid rgba(255,255,255,0.1);
+            background: #111;
+        }
+        .slider-image-layer { 
+            position: absolute; inset: 0; width: 100%; height: 100%; 
+            object-fit: cover; pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        #after-layer { z-index: 2; clip-path: inset(0 0 0 50%); }
+        #before-layer { z-index: 1; }
+
+        .slider-handle {
+            position: absolute; top: 0; bottom: 0; left: 50%; width: 4px;
+            background: white; z-index: 10; transform: translateX(-50%);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+        .slider-handle-circle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: black;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .slider-nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 60px; height: 60px; background: rgba(255,255,255,0.05); backdrop-blur: 15px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            z-index: 30; border: 1px solid rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slider-nav-btn:hover { background: white; color: black; scale: 1.1; box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .slider-nav-btn.left { left: -80px; }
+        .slider-nav-btn.right { right: -80px; }
+        
+        .social-icon-btn { transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .social-icon-btn:hover { transform: translateY(-3px); }
+    </style>
+</head>
+<body class="bg-[#020202]">
+    <div class="cursor-trail" id="cursor-trail"></div>
+    <div class="white-flare" style="top: -200px; right: -100px;"></div>
+    <div class="white-flare" style="bottom: 10%; left: -200px;"></div>
+
+    <!-- Background Marquee -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-30 flex flex-col gap-16 pt-32 overflow-hidden">
+        <div class="marquee">
+            <div class="marquee-content" id="bg-row-1"></div>
+            <div class="marquee-content" id="bg-row-1-copy"></div>
+        </div>
+        <div class="marquee">
+            <div class="marquee-content reverse" id="bg-row-2"></div>
+            <div class="marquee-content reverse" id="bg-row-2-copy"></div>
+        </div>
+        <div class="marquee">
+            <div class="marquee-content" id="bg-row-3"></div>
+            <div class="marquee-content" id="bg-row-3-copy"></div>
+        </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-[100] p-4 flex justify-between items-center bg-black/70 backdrop-blur-2xl border-b border-white/5 px-8">
+        <img src="assets/logo.png" alt="Dezzzy" class="h-10 w-auto object-contain cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <div class="flex items-center gap-6">
+            <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn text-white/40 hover:text-white transition-colors pr-6 border-r border-white/10">
+                <img src="assets/xlogo.png" alt="X" class="w-5 h-5 object-contain invert">
+            </a>
+            <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="bg-white text-black px-6 py-2 rounded-full font-black hover:scale-105 transition-all text-xs uppercase tracking-widest flex items-center gap-2">
+                <i data-lucide="shopping-cart" class="w-4 h-4"></i> ORDER NOW
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 px-4 py-20">
+        <div id="main-logo-container" class="relative mb-16">
+            <div class="absolute inset-0 bg-white/10 blur-[100px] rounded-full"></div>
+            <img src="assets/logo.png" alt="Logo" class="h-40 md:h-52 w-auto object-contain relative z-10">
+        </div>
+        <p class="text-white/50 text-lg md:text-xl font-bold tracking-[0.5em] uppercase mb-12 font-brand italic">Thumbnail Designer</p>
+        <div class="flex flex-col items-center gap-10">
+            <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="bg-white text-black px-16 py-6 rounded-2xl font-black text-2xl md:text-3xl hover:scale-105 transition-all flex items-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
+                <i data-lucide="shopping-cart" class="w-8 h-8"></i> ORDER NOW
+            </a>
+            <div class="flex gap-6">
+                <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="X">
+                    <img src="assets/xlogo.png" alt="X" class="w-8 h-8 object-contain invert">
+                </a>
+                <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="Behance">
+                    <img src="assets/behancelogo.png" alt="Behance" class="w-8 h-8 object-contain invert">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="relative z-10 py-32 overflow-hidden">
+        <div class="text-center mb-24">
+            <h2 class="font-brand text-6xl md:text-7xl font-black italic tracking-tighter uppercase leading-tight">Portfolio</h2>
+            <div class="h-1 w-24 bg-white mx-auto mt-8"></div>
+        </div>
+        <div class="space-y-12">
+            <div class="portfolio-row-container">
+                <button class="scroll-btn left" onclick="scrollRow('port-row-1', -1)"><i data-lucide="chevron-left"></i></button>
+                <div class="portfolio-row" id="port-row-1"></div>
+                <button class="scroll-btn right" onclick="scrollRow('port-row-1', 1)"><i data-lucide="chevron-right"></i></button>
+            </div>
+            <div class="portfolio-row-container">
+                <button class="scroll-btn left" onclick="scrollRow('port-row-2', -1)"><i data-lucide="chevron-left"></i></button>
+                <div class="portfolio-row" id="port-row-2"></div>
+                <button class="scroll-btn right" onclick="scrollRow('port-row-2', 1)"><i data-lucide="chevron-right"></i></button>
+            </div>
+            <div class="portfolio-row-container">
+                <button class="scroll-btn left" onclick="scrollRow('port-row-3', -1)"><i data-lucide="chevron-left"></i></button>
+                <div class="portfolio-row" id="port-row-3"></div>
+                <button class="scroll-btn right" onclick="scrollRow('port-row-3', 1)"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After -->
+    <section class="relative z-10 max-w-7xl mx-auto px-6 py-32">
+        <div class="text-center mb-20">
+            <h2 class="font-brand text-5xl font-black italic uppercase tracking-tighter mb-6">Before / After</h2>
+            <p class="text-white/40 font-medium tracking-widest uppercase text-sm">Slide to reveal the process</p>
+        </div>
+        <div class="slider-wrapper">
+            <button class="slider-nav-btn left" id="prev-slider"><i data-lucide="chevron-left"></i></button>
+            <div class="slider-container shadow-2xl" id="ba-slider">
+                <img src="" id="before-layer" class="slider-image-layer">
+                <img src="" id="after-layer" class="slider-image-layer">
+                <div class="slider-handle" id="slider-handle">
+                    <div class="slider-handle-circle"><i data-lucide="move-horizontal" class="w-7 h-7"></i></div>
+                </div>
+            </div>
+            <button class="slider-nav-btn right" id="next-slider"><i data-lucide="chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section class="relative z-10 max-w-7xl mx-auto px-6 py-40 border-t border-white/5">
+        <div class="text-center mb-24">
+            <h2 class="font-brand text-5xl md:text-6xl font-black italic tracking-tighter uppercase mb-6 text-white/90">About Me</h2>
+            <div class="h-1 w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+        </div>
+        <div class="relative bg-white/[0.02] border border-white/10 rounded-[4rem] overflow-hidden p-8 md:p-20">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-white/[0.03] blur-[100px] rounded-full -mr-48 -mt-48"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="space-y-12">
+                    <div class="space-y-6">
+                        <h3 class="font-brand text-6xl font-black italic uppercase tracking-tighter leading-tight">Ruslan, 19</h3>
+                    </div>
+                    <div class="space-y-8 text-2xl text-white/60 font-medium leading-relaxed max-w-lg">
+                        <p>I’ve been creating YouTube thumbnails for over <span class="text-white">5 years</span>. I help capture viewers’ attention through thoughtful design.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 pt-6">
+                        <div class="border-l-2 border-white/10 pl-6"><div class="font-brand text-5xl font-black italic">5+</div><div class="text-[10px] uppercase font-black text-white/30 tracking-widest mt-2">Years Exp.</div></div>
+                        <div class="border-l-2 border-white/10 pl-6"><div class="font-brand text-5xl font-black italic">1000+</div><div class="text-[10px] uppercase font-black text-white/30 tracking-widest mt-2">Projects<br>Done</div></div>
+                        <div class="border-l-2 border-white/10 pl-6"><div class="font-brand text-5xl font-black italic">200M+</div><div class="text-[10px] uppercase font-black text-white/30 tracking-widest mt-2">Total<br>Views</div></div>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center lg:items-end gap-12">
+                    <img src="assets/logo.png" alt="Dezzzy" class="w-64 h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                    <div class="flex flex-col sm:flex-row gap-6 w-full lg:w-auto">
+                        <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="bg-white text-black px-12 py-5 rounded-2xl font-black uppercase text-xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)]">
+                            <i data-lucide="shopping-cart" class="w-6 h-6"></i> ORDER NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 p-24 border-t border-white/5 text-center">
+        <div class="flex justify-center items-center gap-16 mb-16">
+            <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn transition-all">
+                <img src="assets/xlogo.png" alt="X" class="w-10 h-10 object-contain invert opacity-40 hover:opacity-100">
+            </a>
+            <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn transition-all">
+                <img src="assets/behancelogo.png" alt="Behance" class="w-12 h-12 object-contain invert opacity-40 hover:opacity-100">
+            </a>
+        </div>
+        <p class="text-white/10 text-[11px] font-bold tracking-[0.5em] uppercase leading-loose">DEZZZY DESIGN — © 2026</p>
+    </footer>
+
+    <div id="lightbox"><img src="" id="lightbox-img"></div>
+
+    <script>
+        const allFiles = [
+            '213231.jpg', '233f2f32.jpg', '2f332f32f.jpg', '32а23а.jpg', '345346436.jpg', '3f23fgf.jpg', '49johnnellis.jpg',
+            'after1_nomore.jpg', 'after2_fdfsd.jpg', 'after3_srsgd.jpg', 'after4_fgsdsd.jpg',
+            'before2_gsdsg.jpg', 'before3_erwrr.jpg', 'before4_fwefw.jpg',
+            'b_.jpg', 'b_dfgfgs.jpg', 'b_dirty buffet ver2.jpg', 'b_dirty buffet.jpg', 'b_f323f232f.jpg', 'b_fdgsdfds.jpg',
+            'b_fgssg.jpg', 'b_gfdssgd.jpg', 'b_gfsdsgd.jpg', 'b_goat yoga 2.jpg', 'b_horse therapy.jpg',
+            'b_photo_2025-10-04_16-00-08.jpg', 'b_photo_2026-01-20_13-08-26 (4).jpg', 'b_photo_2026-01-20_13-08-26.jpg',
+            'b_subway new.jpg', 'b_worst vs best buffet new.jpg',
+            'egrrverv.jpg', 'f2332f23f.jpg', 'fgserg.jpg', 'oreo+chili.jpg', 'photo_2025-10-04_15-59-12.jpg', 'sardine+nutella.jpg'
+        ];
+
+        const sliderPairs = [
+            { b: allFiles.find(f => f.includes('before') && (f.includes('1') || f.match(/before_/))), a: allFiles.find(f => f.includes('after') && (f.includes('1') || f.match(/after_/))) },
+            { b: allFiles.find(f => f.includes('before2')), a: allFiles.find(f => f.includes('after2')) },
+            { b: allFiles.find(f => f.includes('before3')), a: allFiles.find(f => f.includes('after3')) },
+            { b: allFiles.find(f => f.includes('before4')), a: allFiles.find(f => f.includes('after4')) }
+        ].filter(p => p.b && p.a);
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Приоритет b_: снаружи только "b_", остальные дальше по скроллу
+        const bItems = shuffle(allFiles.filter(f => f.startsWith('b_')));
+        const regItems = shuffle(allFiles.filter(f => !f.startsWith('b_') && !f.includes('before') && !f.includes('after')));
+        const portfolioPool = [...bItems, ...regItems];
+
+        lucide.createIcons();
+
+        // Trail & Nav
+        const trail = document.getElementById('cursor-trail');
+        window.addEventListener('mousemove', (e) => { trail.style.left = e.clientX + 'px'; trail.style.top = e.clientY + 'px'; });
+        const navbar = document.getElementById('navbar');
+        const mainLogo = document.getElementById('main-logo-container');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { navbar.classList.add('visible'); mainLogo.classList.add('logo-hidden'); } 
+            else { navbar.classList.remove('visible'); mainLogo.classList.remove('logo-hidden'); }
+        });
+
+        // Background (Seamless)
+        const bgRows = ['bg-row-1', 'bg-row-1-copy', 'bg-row-2', 'bg-row-2-copy', 'bg-row-3', 'bg-row-3-copy'];
+        bgRows.forEach(id => {
+            const el = document.getElementById(id);
+            const content = shuffle([...portfolioPool]).slice(0, 15);
+            content.forEach(name => {
+                const img = document.createElement('img'); img.src = 'assets/' + name; img.className = 'marquee-img'; el.appendChild(img);
+            });
+        });
+
+        // Portfolio Rows (Unique, b_ first)
+        const rows = ['port-row-1', 'port-row-2', 'port-row-3'];
+        const itemsPerRow = Math.floor(portfolioPool.length / 3);
+        rows.forEach((rowId, i) => {
+            const el = document.getElementById(rowId);
+            const rowImages = portfolioPool.slice(i * itemsPerRow, (i + 1) * itemsPerRow);
+            rowImages.forEach(name => {
+                const div = document.createElement('div'); div.className = 'portfolio-item';
+                div.innerHTML = `<img src="assets/${name}" class="w-full h-full object-cover">`;
+                div.onclick = () => { document.getElementById('lightbox-img').src = 'assets/' + name; document.getElementById('lightbox').style.display = 'flex'; };
+                el.appendChild(div);
+            });
+        });
+
+        function scrollRow(id, dir) {
+            const el = document.getElementById(id);
+            const maxScroll = el.scrollWidth - el.clientWidth;
+            if (dir === 1 && el.scrollLeft >= maxScroll - 10) el.scrollTo({ left: 0, behavior: 'smooth' });
+            else if (dir === -1 && el.scrollLeft <= 10) el.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            else el.scrollBy({ left: dir * 500, behavior: 'smooth' });
+        }
+
+        document.getElementById('lightbox').onclick = () => document.getElementById('lightbox').style.display = 'none';
+
+        // Slider
+        let curIdx = 0;
+        const slider = document.getElementById('ba-slider');
+        const aLayer = document.getElementById('after-layer');
+        const bLayer = document.getElementById('before-layer');
+        const handle = document.getElementById('slider-handle');
+
+        function updateSlider() {
+            if (sliderPairs.length > 0) {
+                const p = sliderPairs[curIdx];
+                aLayer.style.opacity = 0;
+                setTimeout(() => {
+                    bLayer.src = 'assets/' + p.b;
+                    aLayer.src = 'assets/' + p.a;
+                    aLayer.style.opacity = 1;
+                }, 200);
+            }
+        }
+        updateSlider();
+
+        document.getElementById('prev-slider').onclick = () => { curIdx = (curIdx - 1 + sliderPairs.length) % sliderPairs.length; updateSlider(); };
+        document.getElementById('next-slider').onclick = () => { curIdx = (curIdx + 1) % sliderPairs.length; updateSlider(); };
+
+        slider.onmousemove = (e) => {
+            const rect = slider.getBoundingClientRect();
+            const x = (e.pageX - rect.left);
+            const pct = Math.min(Math.max((x / rect.width) * 100, 0), 100);
+            aLayer.style.clipPath = `inset(0 0 0 ${pct}%)`;
+            handle.style.left = pct + '%';
+        };
+    </script>
+</body>
+</html>
