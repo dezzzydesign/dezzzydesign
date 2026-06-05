@@ -100,6 +100,8 @@
         #before-layer { z-index: 1; }
 
         .slider-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: white; z-index: 10; transform: translateX(-50%); }
+        .slider-container.resetting #after-layer, 
+        .slider-container.resetting .slider-handle { transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
         @media (min-width: 768px) { .slider-handle { width: 4px; } }
         .slider-handle-circle {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -205,7 +207,7 @@
 
     <!-- Before/After -->
     <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-32 pointer-events-none">
-        <div class="pointer-events-auto">
+        <div class="pointer-events-auto" id="ba-block">
             <div class="text-center mb-12 md:mb-20">
                 <h2 class="font-brand text-4xl md:text-5xl font-black italic tracking-wider mb-4 md:mb-6 uppercase">Before / After</h2>
                 <p class="text-white/40 font-medium tracking-widest uppercase text-[10px] md:text-sm">Slide to reveal the process</p>
@@ -396,6 +398,13 @@
                     bLayer.src = 'assets/' + p.b; 
                     aLayer.src = 'assets/' + p.a; 
                     aLayer.style.opacity = 1; 
+
+                    // Включаем плавность для возврата
+                    slider.classList.add('resetting');
+                    aLayer.style.clipPath = `inset(0 0 0 50%)`;
+                    handle.style.left = '50%';
+                    // Убираем класс через время анимации
+                    setTimeout(() => slider.classList.remove('resetting'), 500);
                 }, 150);
             }
         }
@@ -408,6 +417,8 @@
         function handleMove(e) {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
+                    // При ручном движении убираем плавность, чтобы не было задержки
+                    slider.classList.remove('resetting');
                     const rect = slider.getBoundingClientRect();
                     const pageX = (e.pageX || (e.touches ? e.touches[0].pageX : 0));
                     let x = pageX - rect.left;
