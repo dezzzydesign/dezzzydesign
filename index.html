@@ -15,33 +15,36 @@
         body { font-family: 'Inter', sans-serif; background-color: #020202; color: white; margin: 0; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; -webkit-tap-highlight-color: transparent; }
         .font-brand { font-family: 'Montserrat', sans-serif; }
         
+        ::selection { background: white; color: black; }
+        ::-moz-selection { background: white; color: black; }
+
         .white-flare {
             position: fixed;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-            filter: blur(80px);
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            filter: blur(100px);
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         /* Бесшовный фон - Адаптивный */
-        .marquee { display: flex; overflow: hidden; user-select: none; gap: 1.5rem; transform: rotate(-3deg) scale(1.1); width: 100vw; pointer-events: none; height: 160px; }
-        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 1.5rem; animation: scroll 180s linear infinite; pointer-events: none; }
+        .marquee { display: flex; overflow: visible; user-select: none; gap: 1.5rem; transform: rotate(-3deg) scale(1.1); width: 100vw; pointer-events: auto; height: 160px; padding: 20px 0; align-items: center; }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 1.5rem; animation: scroll 180s linear infinite; pointer-events: auto; align-items: center; }
         .marquee-content.reverse { animation-direction: reverse; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         
         .marquee-img { 
             width: 280px; height: 160px; object-fit: cover; border-radius: 1.2rem; 
-            opacity: 0.3; transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
-            cursor: pointer; pointer-events: auto; position: relative;
+            opacity: 1; filter: brightness(0.3) grayscale(0.2); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
+            cursor: pointer; pointer-events: auto; position: relative; background: #020202;
         }
         @media (min-width: 768px) {
             .marquee-img { width: 384px; height: 208px; border-radius: 2rem; }
             .marquee { gap: 3rem; height: 208px; }
             .marquee-content { gap: 3rem; }
         }
-        .marquee-img:hover { opacity: 0.7; transform: scale(1.05); z-index: 50; }
+        .marquee-img:hover { filter: brightness(0.4) grayscale(0); transform: scale(1.07); opacity: 1; z-index: 100; }
 
         #navbar { transition: all 0.5s ease; transform: translateY(-100%); opacity: 0; }
         #navbar.visible { transform: translateY(0); opacity: 1; }
@@ -51,11 +54,19 @@
 
         /* Portfolio */
         .portfolio-row-container { position: relative; width: 100%; }
-        .portfolio-row { display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 1rem 2rem 1rem; scrollbar-width: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .portfolio-row { 
+            display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 1rem 2rem 1rem; 
+            scrollbar-width: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
         @media (min-width: 768px) { .portfolio-row { gap: 2rem; padding: 1rem 2rem 3rem 2rem; } }
         .portfolio-row::-webkit-scrollbar { display: none; }
         
-        .portfolio-item { flex: 0 0 280px; aspect-ratio: 16/9; cursor: pointer; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.5s ease; position: relative; }
+        .portfolio-item { 
+            flex: 0 0 280px; aspect-ratio: 16/9; cursor: pointer; border-radius: 1rem; 
+            overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.5s ease; position: relative;
+            scroll-snap-align: start;
+        }
         @media (min-width: 768px) { .portfolio-item { flex: 0 0 450px; border-radius: 1.5rem; } }
         .portfolio-item:hover { transform: scale(1.02); border-color: rgba(255,255,255,0.4); }
 
@@ -118,11 +129,13 @@
     </style>
 </head>
 <body class="bg-[#020202]">
-    <div class="white-flare" style="top: -10vw; right: -10vw;"></div>
-    <div class="white-flare" style="bottom: 10vw; left: -10vw;"></div>
+    <div class="white-flare" style="top: -10vw; right: -10vw; opacity: 0.08;"></div>
+    <div class="white-flare" style="bottom: 10vw; left: -10vw; opacity: 0.08;"></div>
+    <div class="white-flare" style="top: 40vh; left: 10vw; width: 60vw; height: 60vw; opacity: 0.05;"></div>
+    <div class="white-flare" style="bottom: -20vw; right: 20vw; width: 70vw; height: 70vw; opacity: 0.06;"></div>
 
     <!-- Background Marquee -->
-    <div class="fixed inset-0 pointer-events-none z-0 opacity-30 flex flex-col gap-10 md:gap-16 pt-32 overflow-hidden">
+    <div class="fixed inset-0 pointer-events-none z-[1] opacity-30 flex flex-col gap-10 md:gap-16 pt-32 overflow-hidden">
         <div class="marquee"><div class="marquee-content" id="bg-row-1"></div><div class="marquee-content" id="bg-row-1-copy"></div></div>
         <div class="marquee"><div class="marquee-content reverse" id="bg-row-2"></div><div class="marquee-content reverse" id="bg-row-2-copy"></div></div>
         <div class="marquee"><div class="marquee-content" id="bg-row-3"></div><div class="marquee-content" id="bg-row-3-copy"></div></div>
@@ -142,34 +155,36 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 px-6 py-20">
-        <div id="main-logo-container" class="relative mb-10 md:mb-16">
-            <div class="absolute inset-0 bg-white/10 blur-[80px] md:blur-[100px] rounded-full"></div>
-            <img src="assets/logo.png" alt="Logo" width="542" height="208" class="h-32 md:h-52 w-auto object-contain relative z-10" fetchpriority="high">
-        </div>
-        <p class="text-white/50 text-sm md:text-xl font-bold tracking-[0.3em] md:tracking-[0.5em] uppercase mb-8 md:mb-12 font-brand italic">Thumbnail Designer</p>
-        <div class="flex flex-col items-center gap-6 md:gap-10 w-full max-w-xs md:max-w-none">
-            <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="w-full md:w-auto bg-white text-black px-10 py-5 md:px-16 md:py-6 rounded-2xl font-black text-xl md:text-3xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
-                <i data-lucide="shopping-cart" class="w-6 h-6 md:w-8 md:h-8"></i> ORDER NOW
-            </a>
-            <div class="flex gap-4 md:gap-6">
-                <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn p-4 md:p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="X">
-                    <img src="assets/xlogo.png" alt="X" class="w-6 h-6 object-contain invert">
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 px-6 py-20 pointer-events-none">
+        <div class="pointer-events-auto flex flex-col items-center">
+            <div id="main-logo-container" class="relative mb-10 md:mb-16">
+                <div class="absolute inset-0 bg-white/10 blur-[80px] md:blur-[100px] rounded-full"></div>
+                <img src="assets/logo.png" alt="Logo" width="542" height="208" class="h-32 md:h-52 w-auto object-contain relative z-10" fetchpriority="high">
+            </div>
+            <p class="text-white/50 text-sm md:text-xl font-bold tracking-[0.3em] md:tracking-[0.5em] uppercase mb-8 md:mb-12 font-brand italic">Thumbnail Designer</p>
+            <div class="flex flex-col items-center gap-6 md:gap-10 w-full max-w-xs md:max-w-none">
+                <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="w-full md:w-auto bg-white text-black px-10 py-5 md:px-16 md:py-6 rounded-2xl font-black text-xl md:text-3xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
+                    <i data-lucide="shopping-cart" class="w-6 h-6 md:w-8 md:h-8"></i> ORDER NOW
                 </a>
-                <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn p-4 md:p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="Behance">
-                    <img src="assets/behancelogo.png" alt="Behance" class="w-6 h-6 object-contain invert">
-                </a>
+                <div class="flex gap-4 md:gap-6">
+                    <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn p-4 md:p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="X">
+                        <img src="assets/xlogo.png" alt="X" class="w-6 h-6 object-contain invert">
+                    </a>
+                    <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn p-4 md:p-5 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all flex items-center" title="Behance">
+                        <img src="assets/behancelogo.png" alt="Behance" class="w-6 h-6 object-contain invert">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section class="relative z-10 py-16 md:py-32 overflow-hidden">
-        <div class="text-center mb-16 md:mb-24">
-            <h2 class="font-brand text-4xl md:text-7xl font-black italic tracking-tighter uppercase leading-tight">Portfolio</h2>
+    <section class="relative z-10 py-16 md:py-32 overflow-hidden pointer-events-none">
+        <div class="text-center mb-16 md:mb-24 pointer-events-auto">
+            <h2 class="font-brand text-4xl md:text-7xl font-black italic tracking-wider uppercase leading-tight">Portfolio</h2>
             <div class="h-1 w-16 md:w-24 bg-white mx-auto mt-4 md:mt-8"></div>
         </div>
-        <div class="space-y-8 md:space-y-12">
+        <div class="space-y-8 md:space-y-12 pointer-events-auto">
             <div class="portfolio-row-container">
                 <button class="scroll-btn left" onclick="scrollRow('port-row-1', -1)"><i data-lucide="chevron-left"></i></button>
                 <div class="portfolio-row" id="port-row-1"></div>
@@ -189,80 +204,86 @@
     </section>
 
     <!-- Before/After -->
-    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-32">
-        <div class="text-center mb-12 md:mb-20">
-            <h2 class="font-brand text-4xl md:text-5xl font-black italic tracking-tighter mb-4 md:mb-6 uppercase">Before / After</h2>
-            <p class="text-white/40 font-medium tracking-widest uppercase text-[10px] md:text-sm">Slide to reveal the process</p>
-        </div>
-        <div class="slider-wrapper">
-            <button class="slider-nav-btn left" id="prev-slider"><i data-lucide="chevron-left"></i></button>
-            <div class="slider-container shadow-2xl" id="ba-slider">
-                <img src="" id="before-layer" class="slider-image-layer">
-                <img src="" id="after-layer" class="slider-image-layer">
-                <div class="slider-handle" id="slider-handle">
-                    <div class="slider-handle-circle"><i data-lucide="move-horizontal" class="w-5 h-5 md:w-7 md:h-7"></i></div>
-                </div>
+    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-32 pointer-events-none">
+        <div class="pointer-events-auto">
+            <div class="text-center mb-12 md:mb-20">
+                <h2 class="font-brand text-4xl md:text-5xl font-black italic tracking-wider mb-4 md:mb-6 uppercase">Before / After</h2>
+                <p class="text-white/40 font-medium tracking-widest uppercase text-[10px] md:text-sm">Slide to reveal the process</p>
             </div>
-            <button class="slider-nav-btn right" id="next-slider"><i data-lucide="chevron-right"></i></button>
+            <div class="slider-wrapper">
+                <button class="slider-nav-btn left" id="prev-slider"><i data-lucide="chevron-left"></i></button>
+                <div class="slider-container shadow-2xl" id="ba-slider">
+                    <img src="" id="before-layer" class="slider-image-layer">
+                    <img src="" id="after-layer" class="slider-image-layer">
+                    <div class="slider-handle" id="slider-handle">
+                        <div class="slider-handle-circle"><i data-lucide="move-horizontal" class="w-5 h-5 md:w-7 md:h-7"></i></div>
+                    </div>
+                </div>
+                <button class="slider-nav-btn right" id="next-slider"><i data-lucide="chevron-right"></i></button>
+            </div>
         </div>
     </section>
 
     <!-- About Me -->
-    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-40 border-t border-white/5">
-        <div class="text-center mb-16 md:mb-24">
-            <h2 class="font-brand text-4xl md:text-6xl font-black italic tracking-tighter uppercase mb-4 md:mb-6 text-white/90">About Me</h2>
-            <div class="h-1 w-16 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
-        </div>
+    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-40 border-t border-white/5 pointer-events-none">
+        <div class="pointer-events-auto">
+            <div class="text-center mb-16 md:mb-24">
+                <h2 class="font-brand text-4xl md:text-6xl font-black italic tracking-wider uppercase mb-4 md:mb-6 text-white/90">About Me</h2>
+                <div class="h-1 w-16 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            </div>
 
-        <div class="relative bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[4rem] overflow-hidden p-6 md:p-20">
-            <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/[0.03] blur-[80px] md:blur-[100px] rounded-full -mr-32 -mt-32 md:-mr-48 md:-mt-48"></div>
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
-                <div class="space-y-8 md:space-y-12 text-center lg:text-left">
-                    <div class="space-y-4 md:space-y-6">
-                        <h3 class="font-brand text-4xl md:text-6xl font-black italic uppercase tracking-tighter leading-tight">Ruslan, 19</h3>
+            <div class="relative bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[4rem] overflow-hidden p-6 md:p-20">
+                <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/[0.03] blur-[80px] md:blur-[100px] rounded-full -mr-32 -mt-32 md:-mr-48 md:-mt-48"></div>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+                    <div class="space-y-8 md:space-y-12 text-center lg:text-left">
+                        <div class="space-y-4 md:space-y-6">
+                            <h3 class="font-brand text-4xl md:text-6xl font-black italic uppercase tracking-wider leading-tight">Ruslan, 19</h3>
+                        </div>
+
+                        <div class="space-y-6 md:space-y-8 text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            <p>I’ve been creating YouTube thumbnails for over <span class="text-white">5 years</span>. I help capture viewers’ attention through thoughtful design.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 pt-4">
+                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
+                                <div class="font-brand text-3xl md:text-5xl font-black italic">5+</div>
+                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Years<br>Exp.</div>
+                            </div>
+                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
+                                <div class="font-brand text-3xl md:text-5xl font-black italic">1000+</div>
+                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Projects<br>Done</div>
+                            </div>
+                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
+                                <div class="font-brand text-3xl md:text-5xl font-black italic">200M+</div>
+                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Total<br>Views</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="space-y-6 md:space-y-8 text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
-                        <p>I’ve been creating YouTube thumbnails for over <span class="text-white">5 years</span>. I help capture viewers’ attention through thoughtful design.</p>
+                    <div class="flex flex-col items-center lg:items-end gap-10 md:gap-12">
+                        <img src="assets/logo.png" alt="Dezzzy" class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                        <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="w-full sm:w-auto bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-base md:text-xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)]">
+                            <i data-lucide="shopping-cart" class="w-5 h-5 md:w-6 md:h-6"></i> ORDER NOW
+                        </a>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 pt-4">
-                        <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
-                            <div class="font-brand text-3xl md:text-5xl font-black italic">5+</div>
-                            <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Years<br>Exp.</div>
-                        </div>
-                        <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
-                            <div class="font-brand text-3xl md:text-5xl font-black italic">1000+</div>
-                            <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Projects<br>Done</div>
-                        </div>
-                        <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6">
-                            <div class="font-brand text-3xl md:text-5xl font-black italic">200M+</div>
-                            <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight">Total<br>Views</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center lg:items-end gap-10 md:gap-12">
-                    <img src="assets/logo.png" alt="Dezzzy" class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-                    <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="w-full sm:w-auto bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-base md:text-xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)]">
-                        <i data-lucide="shopping-cart" class="w-5 h-5 md:w-6 md:h-6"></i> ORDER NOW
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 p-12 md:p-24 border-t border-white/5 text-center">
-        <div class="flex justify-center items-center gap-8 md:gap-16 mb-12 md:mb-16">
-            <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn transition-all">
-                <img src="assets/xlogo.png" alt="X" class="w-8 h-8 md:w-10 md:h-10 object-contain invert opacity-40 hover:opacity-100">
-            </a>
-            <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn transition-all">
-                <img src="assets/behancelogo.png" alt="Behance" class="w-10 h-10 md:w-12 md:h-12 object-contain invert opacity-40 hover:opacity-100">
-            </a>
+    <footer class="relative z-10 p-12 md:p-24 border-t border-white/5 text-center pointer-events-none">
+        <div class="pointer-events-auto">
+            <div class="flex justify-center items-center gap-8 md:gap-16 mb-12 md:mb-16">
+                <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn transition-all">
+                    <img src="assets/xlogo.png" alt="X" class="w-8 h-8 md:w-10 md:h-10 object-contain invert opacity-40 hover:opacity-100">
+                </a>
+                <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn transition-all">
+                    <img src="assets/behancelogo.png" alt="Behance" class="w-10 h-10 md:w-12 md:h-12 object-contain invert opacity-40 hover:opacity-100">
+                </a>
+            </div>
+            <p class="text-white/10 text-[9px] md:text-[11px] font-bold tracking-[0.5em] uppercase leading-loose px-4">DEZZZY DESIGN — © 2026</p>
         </div>
-        <p class="text-white/10 text-[9px] md:text-[11px] font-bold tracking-[0.5em] uppercase leading-loose px-4">DEZZZY DESIGN — © 2026</p>
     </footer>
 
     <div id="lightbox"><img src="" id="lightbox-img"></div>
@@ -339,7 +360,12 @@
 
         function scrollRow(id, dir) {
             const el = document.getElementById(id);
-            const scrollAmount = window.innerWidth > 768 ? 500 : 300;
+            const item = el.querySelector('.portfolio-item');
+            if (!item) return;
+            
+            const gap = window.innerWidth > 768 ? 32 : 16; // 2rem vs 1rem
+            const scrollAmount = item.offsetWidth + gap;
+            
             const maxScroll = el.scrollWidth - el.clientWidth;
             if (dir === 1 && el.scrollLeft >= maxScroll - 10) el.scrollTo({ left: 0, behavior: 'smooth' });
             else if (dir === -1 && el.scrollLeft <= 10) el.scrollTo({ left: maxScroll, behavior: 'smooth' });
@@ -354,11 +380,23 @@
         const bLayer = document.getElementById('before-layer');
         const handle = document.getElementById('slider-handle');
 
+        // Preload slider images
+        const preloadedImages = {};
+        sliderPairs.forEach(p => {
+            const imgB = new Image(); imgB.src = 'assets/' + p.b; preloadedImages[p.b] = imgB;
+            const imgA = new Image(); imgA.src = 'assets/' + p.a; preloadedImages[p.a] = imgA;
+        });
+
         function updateSlider() {
             if (sliderPairs.length > 0) {
                 const p = sliderPairs[curIdx];
                 aLayer.style.opacity = 0;
-                setTimeout(() => { bLayer.src = 'assets/' + p.b; aLayer.src = 'assets/' + p.a; aLayer.style.opacity = 1; }, 200);
+                // Use preloaded images if ready, otherwise normal swap
+                setTimeout(() => { 
+                    bLayer.src = 'assets/' + p.b; 
+                    aLayer.src = 'assets/' + p.a; 
+                    aLayer.style.opacity = 1; 
+                }, 150);
             }
         }
         updateSlider();
@@ -366,17 +404,25 @@
         document.getElementById('prev-slider').onclick = () => { curIdx = (curIdx - 1 + sliderPairs.length) % sliderPairs.length; updateSlider(); };
         document.getElementById('next-slider').onclick = () => { curIdx = (curIdx + 1) % sliderPairs.length; updateSlider(); };
 
+        let ticking = false;
         function handleMove(e) {
-            const rect = slider.getBoundingClientRect();
-            const pageX = e.pageX || (e.touches ? e.touches[0].pageX : 0);
-            let x = pageX - rect.left;
-            if (x < 0) x = 0; if (x > rect.width) x = rect.width;
-            let percent = (x / rect.width) * 100;
-            aLayer.style.clipPath = `inset(0 0 0 ${percent}%)`;
-            handle.style.left = percent + '%';
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const rect = slider.getBoundingClientRect();
+                    const pageX = (e.pageX || (e.touches ? e.touches[0].pageX : 0));
+                    let x = pageX - rect.left;
+                    if (x < 0) x = 0; if (x > rect.width) x = rect.width;
+                    let percent = (x / rect.width) * 100;
+                    aLayer.style.clipPath = `inset(0 0 0 ${percent}%)`;
+                    handle.style.left = percent + '%';
+                    ticking = false;
+                });
+                ticking = true;
+            }
         }
         slider.addEventListener('mousemove', handleMove);
         slider.addEventListener('touchmove', handleMove, {passive: true});
     </script>
 </body>
 </html>
+>
