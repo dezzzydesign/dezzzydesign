@@ -38,19 +38,19 @@
         }
 
         /* Бесшовный фон - Адаптивный */
-        .marquee { display: flex; overflow: visible; user-select: none; gap: 1.5rem; transform: rotate(-3deg) scale(1.1); width: 100vw; pointer-events: auto; height: 160px; padding: 20px 0; align-items: center; }
-        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 1.5rem; animation: scroll 180s linear infinite; pointer-events: auto; align-items: center; }
+        .marquee { display: flex; overflow: visible; user-select: none; gap: 1rem; transform: rotate(-3deg) scale(1.1); width: 100vw; pointer-events: auto; height: 120px; padding: 10px 0; align-items: center; }
+        .marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; gap: 1rem; animation: scroll 180s linear infinite; pointer-events: auto; align-items: center; }
         .marquee-content.reverse { animation-direction: reverse; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
         
         .marquee-img { 
-            width: 280px; height: 160px; object-fit: cover; border-radius: 1.2rem; 
+            width: 200px; height: 112px; object-fit: cover; border-radius: 0.8rem; 
             opacity: 1; filter: brightness(0.3) grayscale(0.2); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); 
             cursor: pointer; pointer-events: auto; position: relative; background: #020202;
         }
         @media (min-width: 768px) {
             .marquee-img { width: 384px; height: 208px; border-radius: 2rem; }
-            .marquee { gap: 3rem; height: 208px; }
+            .marquee { gap: 3rem; height: 208px; padding: 20px 0; }
             .marquee-content { gap: 3rem; }
         }
         .marquee-img:hover { filter: brightness(0.4) grayscale(0); transform: scale(1.07); opacity: 1; z-index: 100; }
@@ -63,24 +63,29 @@
 
         /* Portfolio - 4 Rows Infinite Scroll */
         .portfolio-section-container { max-width: 1600px; margin: 0 auto; position: relative; }
-        .portfolio-row-wrapper { position: relative; margin-bottom: 2rem; padding: 0 60px; }
+        .portfolio-row-wrapper { position: relative; margin-bottom: 1.5rem; padding: 0 10px; }
+        @media (min-width: 768px) { .portfolio-row-wrapper { padding: 0 60px; margin-bottom: 2rem; } }
+        
         .portfolio-row-container { 
-            width: 100%; overflow: hidden; position: relative; border-radius: 1.5rem;
+            width: 100%; overflow: hidden; position: relative; border-radius: 0.8rem;
         }
+        @media (min-width: 768px) { .portfolio-row-container { border-radius: 1.5rem; } }
+
         .portfolio-row { 
-            display: flex; gap: 24px; padding: 1rem 0;
+            display: flex; gap: 12px; padding: 0.5rem 0;
             scrollbar-width: none; scroll-behavior: smooth;
             overflow-x: auto;
         }
+        @media (min-width: 768px) { .portfolio-row { gap: 24px; padding: 1rem 0; } }
         .portfolio-row::-webkit-scrollbar { display: none; }
         
         .portfolio-item { 
-            flex: 0 0 100%; aspect-ratio: 16/9; cursor: pointer; border-radius: 1.2rem; 
+            flex: 0 0 85%; aspect-ratio: 16/9; cursor: pointer; border-radius: 0.8rem; 
             overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
             background: #111; box-sizing: border-box;
         }
         @media (min-width: 768px) { 
-            .portfolio-item { flex: 0 0 calc((100% - 24px) / 2); } 
+            .portfolio-item { flex: 0 0 calc((100% - 24px) / 2); border-radius: 1.2rem; } 
         }
         @media (min-width: 1024px) { 
             .portfolio-item { flex: 0 0 calc((100% - 48px) / 3); border-radius: 1.8rem; } 
@@ -91,12 +96,14 @@
 
         .portfolio-nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 44px; height: 44px; background: rgba(255,255,255,0.05); backdrop-blur: 15px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; background: rgba(255,255,255,0.05); backdrop-blur: 15px;
+            border-radius: 50%; display: none; align-items: center; justify-content: center;
             z-index: 30; border: 1px solid rgba(255,255,255,0.1); color: white; 
-            transition: all 0.3s ease; opacity: 0; pointer-events: none;
+            transition: all 0.3s ease;
         }
-        .portfolio-row-wrapper:hover .portfolio-nav-btn { opacity: 1; pointer-events: auto; }
+        @media (min-width: 1024px) {
+            .portfolio-row-wrapper:hover .portfolio-nav-btn { display: flex; opacity: 1; pointer-events: auto; }
+        }
         .portfolio-nav-btn:hover { background: white; color: black; }
         .portfolio-nav-btn.left { left: 8px; }
         .portfolio-nav-btn.right { right: 8px; }
@@ -107,7 +114,7 @@
         /* Слайдер До/После - Адаптивный */
         .slider-wrapper { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 10px; }
         .slider-container { 
-            position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 1.5rem; 
+            position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 1rem; 
             overflow: hidden; cursor: ew-resize; border: 1px solid rgba(255,255,255,0.1);
             background: #111; touch-action: pan-y;
         }
@@ -122,7 +129,7 @@
         @media (min-width: 768px) { .slider-handle { width: 4px; } }
         .slider-handle-circle {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 40px; height: 40px; background: white; border-radius: 50%;
+            width: 36px; height: 36px; background: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; color: black;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
@@ -130,10 +137,11 @@
 
         .slider-nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 44px; height: 44px; background: rgba(0,0,0,0.5); backdrop-blur: 10px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; background: rgba(0,0,0,0.5); backdrop-blur: 10px;
+            border-radius: 50%; display: none; align-items: center; justify-content: center;
             z-index: 30; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;
         }
+        @media (min-width: 1100px) { .slider-nav-btn { display: flex; } }
         @media (max-width: 1100px) {
             .slider-nav-btn.left { left: 20px; }
             .slider-nav-btn.right { right: 20px; }
@@ -144,7 +152,7 @@
         }
         .slider-nav-btn:hover { background: white; color: black; }
         
-        .social-icon-btn { transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; }
+        .social-icon-btn { transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
 
         @keyframes bounce-subtle {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -153,31 +161,76 @@
         }
         .animate-bounce-subtle { animation: bounce-subtle 2s infinite; }
         
-        /* --- GLOBAL ANIMATION SYSTEM --- */
+        /* --- GLOBAL ANIMATION SYSTEM (Simplified for Performance) --- */
         .reveal-init { 
             opacity: 0; 
-            filter: blur(4px); 
-            transform: translateY(-20px); 
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
-            will-change: transform, opacity, filter; 
+            transform: translateY(10px); 
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out; 
+            will-change: transform, opacity; 
         }
-        .reveal-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
 
-        .reveal-blur { filter: blur(8px); }
-        .reveal-visible.reveal-blur { filter: blur(0); }
+        /* Remove heavy blur transitions */
+        .reveal-blur { filter: none !important; } 
+        .reveal-visible.reveal-blur { filter: none !important; }
         
-        .delay-100 { transition-delay: 0.05s; }
-        .delay-200 { transition-delay: 0.1s; }
-        .delay-300 { transition-delay: 0.15s; }
-        .delay-400 { transition-delay: 0.2s; }
-        .delay-500 { transition-delay: 0.25s; }
+        /* Interactive Cards Optimization */
+        .interactive-card {
+            will-change: transform, background-color, border-color;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), 
+                        background-color 0.1s cubic-bezier(0.4, 0, 0.2, 1), 
+                        border-color 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            user-select: none;
+        }
+        
+        .interactive-card:hover {
+            transform: scale(1.02) translateZ(0);
+            background-color: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .selectable-value {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            cursor: text;
+        }
+
+        .copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: white;
+            color: black;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            z-index: 1000;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+        .copy-toast.visible { transform: translateX(-50%) translateY(0); }
+
+        .interactive-card .icon-box {
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card:hover .icon-box {
+            transform: scale(1.1);
+        }
+        
+        .delay-100 { transition-delay: 0.03s; }
+        .delay-200 { transition-delay: 0.06s; }
+        .delay-300 { transition-delay: 0.09s; }
+        .delay-400 { transition-delay: 0.12s; }
+        .delay-500 { transition-delay: 0.15s; }
 
         /* Premium Enhancements */
-        .noise-overlay { 
-            position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.2; 
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-        }
         #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 2px; background: white; z-index: 1000; transition: width 0.1s ease; }
         
         ::-webkit-scrollbar { width: 6px; }
@@ -186,25 +239,32 @@
         ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 
         /* Global Layout Perfection */
-        section { padding-top: 6rem; padding-bottom: 6rem; }
-        @media (min-width: 768px) { section { padding-top: 10rem; padding-bottom: 10rem; } }
+        section { padding-top: 4rem; padding-bottom: 4rem; }
+        @media (min-width: 768px) { section { padding-top: 8rem; padding-bottom: 8rem; } }
         .max-w-7xl { max-width: 80rem !important; margin-left: auto !important; margin-right: auto !important; }
         
-        .portfolio-row-wrapper { padding: 0 70px; margin-bottom: 3rem; }
-        .portfolio-nav-btn.left { left: 10px; }
-        .portfolio-nav-btn.right { right: 10px; }
+        .portfolio-row-wrapper { padding: 0 15px; margin-bottom: 2rem; }
+        @media (min-width: 768px) { .portfolio-row-wrapper { padding: 0 70px; margin-bottom: 3rem; } }
 
         /* Floating Flare Animation */
         @keyframes float { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(30px, -50px); } 66% { transform: translate(-20px, 20px); } }
-        .animate-float { animation: float 15s ease-ignore-case-in-out infinite; }
+        .animate-float { animation: float 15s ease-in-out infinite; }
 
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: white; transition: width 0.3s ease; }
         .nav-link:hover::after { width: 100%; }
+
+        /* Mobile specific fixes */
+        @media (max-width: 640px) {
+            .font-brand.text-xl { font-size: 1.1rem !important; }
+            .interactive-card { padding: 1.25rem !important; gap: 1rem !important; }
+            .interactive-card .icon-box { width: 3rem !important; height: 3rem !important; }
+            .interactive-card .icon-box i { width: 1.5rem !important; height: 1.5rem !important; }
+            h2.font-brand { font-size: 2.5rem !important; }
+        }
     </style>
 </head>
 <body class="bg-[#020202]">
-    <div class="noise-overlay"></div>
     <div id="scroll-progress"></div>
     <div class="white-flare animate-float" style="top: -10vw; right: -10vw; opacity: 0.08;"></div>
     <div class="white-flare animate-float" style="bottom: 10vw; left: -10vw; opacity: 0.08; animation-delay: -5s;"></div>
@@ -212,16 +272,16 @@
     <div class="white-flare animate-float" style="bottom: -20vw; right: 20vw; width: 70vw; height: 70vw; opacity: 0.06; animation-delay: -2s;"></div>
 
     <!-- Background Marquee -->
-    <div class="fixed inset-0 pointer-events-none z-[1] opacity-30 flex flex-col gap-10 md:gap-16 pt-32 overflow-hidden">
+    <div class="fixed inset-0 pointer-events-none z-[1] opacity-30 flex flex-col gap-8 md:gap-16 pt-32 overflow-hidden">
         <div class="marquee"><div class="marquee-content" id="bg-row-1"></div><div class="marquee-content" id="bg-row-1-copy"></div></div>
         <div class="marquee"><div class="marquee-content reverse" id="bg-row-2"></div><div class="marquee-content reverse" id="bg-row-2-copy"></div></div>
         <div class="marquee"><div class="marquee-content" id="bg-row-3"></div><div class="marquee-content" id="bg-row-3-copy"></div></div>
     </div>
 
     <!-- Sticky Navbar -->
-    <nav id="navbar" class="fixed top-0 w-full z-[100] p-4 md:p-6 bg-black/80 backdrop-blur-2xl border-b border-white/5 px-6 md:px-12">
+    <nav id="navbar" class="fixed top-0 w-full z-[100] p-4 bg-black/80 backdrop-blur-2xl border-b border-white/5 px-4 md:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center relative">
-            <img src="assets/logo.png" alt="Dezzzy" width="104" height="40" class="h-8 md:h-10 w-auto object-contain cursor-pointer flex-shrink-0" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <img src="assets/logo.png" alt="Dezzzy" width="80" height="30" class="h-6 md:h-10 w-auto object-contain cursor-pointer flex-shrink-0" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             
             <!-- Desktop Nav Links (Centered) -->
             <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
@@ -231,11 +291,11 @@
                 <a href="javascript:void(0)" onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="nav-link font-brand text-[11px] md:text-xs font-black uppercase tracking-[0.25em] opacity-40 hover:opacity-100 transition-all" data-t="contact">Contact</a>
             </div>
 
-            <div class="flex items-center gap-4 md:gap-8 flex-shrink-0">
+            <div class="flex items-center gap-3 md:gap-8 flex-shrink-0">
                 <!-- Language Switcher -->
-                <div class="relative group mr-2 md:mr-4">
-                    <button class="flex items-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest opacity-50 hover:opacity-100 transition-all">
-                        <i data-lucide="languages" class="w-4 h-4"></i>
+                <div class="relative group">
+                    <button class="flex items-center gap-1 text-[10px] md:text-xs font-black uppercase tracking-widest opacity-50 hover:opacity-100 transition-all">
+                        <i data-lucide="languages" class="w-3 h-3 md:w-4 md:h-4"></i>
                         <span id="current-lang">EN</span>
                     </button>
                     <div class="absolute right-0 top-full pt-4 hidden group-hover:block z-[120]">
@@ -249,17 +309,17 @@
                     </div>
                 </div>
 
-                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="bg-white text-black px-6 py-2 md:px-8 md:py-3 rounded-full font-black hover:scale-105 transition-all text-xs md:text-sm uppercase tracking-widest flex items-center gap-3">
-                    <i data-lucide="shopping-cart" class="w-4 h-4 md:w-5 md:h-5"></i> <span data-t="order_now">ORDER NOW</span>
+                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="bg-white text-black px-4 py-2 md:px-8 md:py-3 rounded-full font-black hover:scale-105 transition-all text-[10px] md:text-sm uppercase tracking-widest flex items-center gap-2">
+                    <i data-lucide="shopping-cart" class="w-3 h-3 md:w-5 md:h-5"></i> <span data-t="order_now">ORDER NOW</span>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 px-6 pt-32 pb-20 pointer-events-none">
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 px-4 pt-20 pb-10 pointer-events-none">
         <!-- Static Nav for Hero -->
-        <div id="hero-nav" class="absolute top-12 left-0 w-full flex justify-center items-center gap-6 md:gap-10 pointer-events-auto z-[110]">
+        <div id="hero-nav" class="hidden sm:flex absolute top-12 left-0 w-full justify-center items-center gap-6 md:gap-10 pointer-events-auto z-[110]">
             <a href="javascript:void(0)" onclick="document.getElementById('portfolio-section').scrollIntoView({behavior: 'smooth'})" class="nav-link font-brand text-xs md:text-sm font-black uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-all" data-t="portfolio">Portfolio</a>
             <a href="javascript:void(0)" onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="nav-link font-brand text-xs md:text-sm font-black uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-all" data-t="price_info">Price & Info</a>
             <a href="javascript:void(0)" onclick="document.getElementById('about-me-section').scrollIntoView({behavior: 'smooth'})" class="nav-link font-brand text-xs md:text-sm font-black uppercase tracking-[0.3em] opacity-60 hover:opacity-100 transition-all" data-t="about_me">About Me</a>
@@ -287,32 +347,32 @@
 
         <!-- Main Content -->
         <div class="pointer-events-auto flex flex-col items-center max-w-4xl w-full reveal-init reveal-blur">
-            <div id="main-logo-container" class="relative mb-12 md:mb-20">
-                <div class="absolute inset-0 bg-white/10 blur-[100px] md:blur-[140px] rounded-full"></div>
-                <img src="assets/logo.png" alt="Logo" width="542" height="208" class="h-36 md:h-64 w-auto object-contain relative z-10" fetchpriority="high">
+            <div id="main-logo-container" class="relative mb-8 md:mb-20">
+                <div class="absolute inset-0 bg-white/10 blur-[60px] md:blur-[140px] rounded-full"></div>
+                <img src="assets/logo.png" alt="Logo" width="542" height="208" class="h-24 md:h-64 w-auto object-contain relative z-10" fetchpriority="high">
             </div>
             
             <!-- Primary CTA Group -->
-            <div class="flex flex-col gap-10 w-full max-w-xs md:max-w-sm items-center mb-16 reveal-init delay-200">
-                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-white text-black py-4 md:py-5 rounded-2xl font-black text-xl md:text-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 shadow-[0_20px_80px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
+            <div class="flex flex-col gap-6 md:gap-10 w-full max-w-[280px] md:max-w-sm items-center mb-10 md:mb-16 reveal-init delay-200">
+                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-white text-black py-4 md:py-5 rounded-2xl font-black text-lg md:text-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3 md:gap-4 shadow-[0_20px_80px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
                     <i data-lucide="shopping-cart" class="w-5 h-5 md:w-7 md:h-7"></i> <span data-t="order_now">ORDER NOW</span>
                 </button>
 
                 <!-- Subtle Socials -->
-                <div class="flex items-center justify-center gap-6 md:gap-8 px-4 reveal-init delay-400">
-                    <a href="https://x.com/DezzzyDesign" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-300 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                <div class="flex items-center justify-center gap-5 md:gap-8 px-4 reveal-init delay-400">
+                    <a href="https://x.com/DezzzyDesign" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-200 flex items-center justify-center w-6 h-6 md:w-10 md:h-10">
                         <img src="assets/xlogo.png" alt="X" class="max-w-full max-h-full object-contain invert">
                     </a>
-                    <a href="https://youtube.com/@DezzzyDesign" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-300 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                    <a href="https://youtube.com/@DezzzyDesign" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-200 flex items-center justify-center w-6 h-6 md:w-10 md:h-10">
                         <svg viewBox="0 0 24 24" fill="#7c7c7c" class="w-full h-full"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
-                    <a href="https://instagram.com/dezzzy.design" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-300 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                    <a href="https://instagram.com/dezzzy.design" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-200 flex items-center justify-center w-6 h-6 md:w-10 md:h-10">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#7c7c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </a>
-                    <a href="https://tiktok.com/@dezzzycom" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-300 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                    <a href="https://tiktok.com/@dezzzycom" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-200 flex items-center justify-center w-6 h-6 md:w-10 md:h-10">
                         <svg viewBox="0 0 24 24" fill="#7c7c7c" class="w-full h-full"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.3a3.34 3.34 0 0 0-1.61 3.12c.04.5.17.99.39 1.44.42.92 1.25 1.63 2.21 1.94.88.29 1.86.2 2.64-.32.96-.59 1.55-1.64 1.63-2.76.03-4.07-.01-8.14.01-12.21z"/></svg>
                     </a>
-                    <a href="https://www.behance.net/dezzzy" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-300 flex items-center justify-center w-8 h-8 md:w-10 md:h-10">
+                    <a href="https://www.behance.net/dezzzy" target="_blank" class="opacity-30 hover:opacity-100 hover:scale-125 transition-all duration-200 flex items-center justify-center w-6 h-6 md:w-10 md:h-10">
                         <img src="assets/behancelogo.png" alt="Behance" class="max-w-full max-h-full object-contain invert">
                     </a>
                 </div>
@@ -320,38 +380,35 @@
         </div>
 
         <!-- Bouncing Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer pointer-events-auto opacity-20 hover:opacity-100 transition-opacity animate-bounce-subtle reveal-init delay-700" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
-            <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer pointer-events-auto opacity-20 hover:opacity-100 transition-opacity animate-bounce-subtle reveal-init delay-700" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'})">
+            <i data-lucide="chevron-down" class="w-6 h-6 md:w-8 md:h-8 text-white"></i>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio-section" class="relative z-10 py-16 md:py-32 overflow-hidden pointer-events-none">
-        <div class="text-center mb-16 md:mb-24 pointer-events-auto reveal-init">
+    <section id="portfolio-section" class="relative z-10 py-10 md:py-32 overflow-hidden pointer-events-none">
+        <div class="text-center mb-10 md:mb-24 pointer-events-auto reveal-init">
             <h2 class="font-brand text-4xl md:text-7xl font-black italic tracking-wider uppercase leading-tight" data-t="portfolio">Portfolio</h2>
-            <div class="h-1 w-16 md:w-24 bg-white mx-auto mt-4 md:mt-8"></div>
+            <div class="h-1 w-12 md:w-24 bg-white mx-auto mt-2 md:mt-8"></div>
         </div>
         
         <div class="portfolio-section-container pointer-events-auto">
-            <!-- Row 1 -->
+            <!-- Rows 1-4 -->
             <div class="portfolio-row-wrapper reveal-init" id="row-wrapper-1">
                 <button class="portfolio-nav-btn left" onclick="scrollInfinite('port-row-1', -1)"><i data-lucide="chevron-left"></i></button>
                 <div class="portfolio-row-container"><div id="port-row-1" class="portfolio-row"></div></div>
                 <button class="portfolio-nav-btn right" onclick="scrollInfinite('port-row-1', 1)"><i data-lucide="chevron-right"></i></button>
             </div>
-            <!-- Row 2 -->
             <div class="portfolio-row-wrapper reveal-init delay-100" id="row-wrapper-2">
                 <button class="portfolio-nav-btn left" onclick="scrollInfinite('port-row-2', -1)"><i data-lucide="chevron-left"></i></button>
                 <div class="portfolio-row-container"><div id="port-row-2" class="portfolio-row"></div></div>
                 <button class="portfolio-nav-btn right" onclick="scrollInfinite('port-row-2', 1)"><i data-lucide="chevron-right"></i></button>
             </div>
-            <!-- Row 3 -->
             <div class="portfolio-row-wrapper reveal-init delay-200" id="row-wrapper-3">
                 <button class="portfolio-nav-btn left" onclick="scrollInfinite('port-row-3', -1)"><i data-lucide="chevron-left"></i></button>
                 <div class="portfolio-row-container"><div id="port-row-3" class="portfolio-row"></div></div>
                 <button class="portfolio-nav-btn right" onclick="scrollInfinite('port-row-3', 1)"><i data-lucide="chevron-right"></i></button>
             </div>
-            <!-- Row 4 -->
             <div class="portfolio-row-wrapper reveal-init delay-300" id="row-wrapper-4">
                 <button class="portfolio-nav-btn left" onclick="scrollInfinite('port-row-4', -1)"><i data-lucide="chevron-left"></i></button>
                 <div class="portfolio-row-container"><div id="port-row-4" class="portfolio-row"></div></div>
@@ -361,11 +418,11 @@
     </section>
 
     <!-- Before/After -->
-    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-32 pointer-events-none">
+    <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-32 pointer-events-none">
         <div class="pointer-events-auto" id="ba-block">
-            <div class="text-center mb-12 md:mb-20 reveal-init">
-                <h2 class="font-brand text-4xl md:text-5xl font-black italic tracking-wider mb-4 md:mb-6 uppercase" data-t="before_after">Before / After</h2>
-                <div class="h-1 w-16 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            <div class="text-center mb-8 md:mb-20 reveal-init">
+                <h2 class="font-brand text-3xl md:text-5xl font-black italic tracking-wider mb-2 md:mb-6 uppercase" data-t="before_after">Before / After</h2>
+                <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
             </div>
             <div class="slider-wrapper reveal-init reveal-blur delay-200">
                 <button class="slider-nav-btn left" id="prev-slider"><i data-lucide="chevron-left"></i></button>
@@ -373,7 +430,7 @@
                     <img src="" id="before-layer" class="slider-image-layer">
                     <img src="" id="after-layer" class="slider-image-layer">
                     <div class="slider-handle" id="slider-handle">
-                        <div class="slider-handle-circle"><i data-lucide="move-horizontal" class="w-5 h-5 md:w-7 md:h-7"></i></div>
+                        <div class="slider-handle-circle"><i data-lucide="move-horizontal" class="w-4 h-4 md:w-7 md:h-7"></i></div>
                     </div>
                 </div>
                 <button class="slider-nav-btn right" id="next-slider"><i data-lucide="chevron-right"></i></button>
@@ -382,79 +439,67 @@
     </section>
 
     <!-- Price & Info Section -->
-    <section id="pricing-section" class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-40 border-t border-white/5 pointer-events-none">
+    <section id="pricing-section" class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-40 border-t border-white/5 pointer-events-none">
         <div class="pointer-events-auto">
-            <div class="text-center mb-16 md:mb-24 reveal-init">
-                <h2 class="font-brand text-4xl md:text-7xl font-black italic tracking-wider uppercase leading-tight" data-t="price_info">Price & Info</h2>
-                <div class="h-1 w-16 md:w-24 bg-white mx-auto mt-4 md:mt-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]"></div>
+            <div class="text-center mb-10 md:mb-24 reveal-init">
+                <h2 class="font-brand text-3xl md:text-7xl font-black italic tracking-wider uppercase leading-tight" data-t="price_info">Price & Info</h2>
+                <div class="h-1 w-12 md:w-24 bg-white mx-auto mt-2 md:mt-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Column 1: Process / How to start -->
-                <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col min-h-[500px] reveal-init reveal-left delay-300">
-                    <div class="flex items-center gap-4 mb-10">
-                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center">
-                            <i data-lucide="info" class="w-6 h-6 text-white"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                <!-- Column 1: Start -->
+                <div class="bg-white/[0.02] border border-white/10 rounded-[2rem] p-6 md:p-10 flex flex-col reveal-init delay-300">
+                    <div class="flex items-center gap-4 mb-6 md:mb-10">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="info" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="start">Start</h3>
+                        <h3 class="font-brand text-xl md:text-2xl font-black uppercase italic tracking-wider" data-t="start">Start</h3>
                     </div>
-                    <div class="space-y-6 text-white/50 text-sm md:text-base leading-relaxed">
-                        <p data-t="get_started_desc">To get started, please provide the following details when contacting me:</p>
-                        <div class="h-px bg-white/5 w-full"></div>
-                        <ul class="space-y-5">
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="link-2" class="w-4 h-4 text-white/30"></i> <span data-t="channel_link">Channel link</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="file-text" class="w-4 h-4 text-white/30"></i> <span data-t="brief_ideas">Brief & Ideas</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="image" class="w-4 h-4 text-white/30"></i> <span data-t="assets_refs">Assets & Refs</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="calendar" class="w-4 h-4 text-white/30"></i> <span data-t="deadline">Deadline</span></li>
+                    <div class="space-y-4 md:space-y-6 text-white/50 text-xs md:text-base">
+                        <p data-t="get_started_desc">Prepare these details:</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-white/80 font-bold uppercase text-[10px] md:text-[11px] tracking-widest"><i data-lucide="link-2" class="w-4 h-4 opacity-30"></i> <span data-t="channel_link">Channel link</span></li>
+                            <li class="flex items-center gap-3 text-white/80 font-bold uppercase text-[10px] md:text-[11px] tracking-widest"><i data-lucide="file-text" class="w-4 h-4 opacity-30"></i> <span data-t="brief_ideas">Brief & Ideas</span></li>
+                            <li class="flex items-center gap-3 text-white/80 font-bold uppercase text-[10px] md:text-[11px] tracking-widest"><i data-lucide="image" class="w-4 h-4 opacity-30"></i> <span data-t="assets_refs">Assets & Refs</span></li>
+                            <li class="flex items-center gap-3 text-white/80 font-bold uppercase text-[10px] md:text-[11px] tracking-widest"><i data-lucide="calendar" class="w-4 h-4 opacity-30"></i> <span data-t="deadline">Deadline</span></li>
                         </ul>
-                    </div>
-                    <div class="mt-auto pt-8">
-                        <p class="text-[10px] text-white/20 uppercase font-black tracking-widest italic leading-relaxed" data-t="more_details">The more details you share, the better the result.</p>
                     </div>
                 </div>
 
-                <!-- Column 2: Pricing (Center / Main) -->
-                <div class="bg-white text-black rounded-[2.5rem] p-8 md:p-10 flex flex-col transform lg:scale-105 shadow-[0_0_80px_rgba(255,255,255,0.05)] reveal-init delay-100">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-black/5 rounded-2xl flex items-center justify-center">
-                            <i data-lucide="banknote" class="w-6 h-6 text-black"></i>
+                <!-- Column 2: Pricing (Main) -->
+                <div class="bg-white text-black rounded-[2.5rem] p-8 md:p-10 flex flex-col transform lg:scale-105 shadow-2xl reveal-init delay-100">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-black/5 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="banknote" class="w-5 h-5 md:w-6 md:h-6 text-black"></i>
                         </div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="pricing">Pricing</h3>
+                        <h3 class="font-brand text-xl md:text-2xl font-black uppercase italic tracking-wider" data-t="pricing">Pricing</h3>
                     </div>
-                    <div class="mb-8">
-                        <div class="text-[10px] uppercase font-black tracking-widest mb-1 opacity-40 italic" data-t="from">From</div>
-                        <div class="text-7xl font-brand font-black italic leading-none">$40</div>
-                        <div class="text-[10px] uppercase font-black tracking-widest mt-2 opacity-40" data-t="per_thumb">Per Thumbnail</div>
+                    <div class="mb-6">
+                        <div class="text-[9px] md:text-[10px] uppercase font-black tracking-widest opacity-40 italic" data-t="from">From</div>
+                        <div class="text-5xl md:text-7xl font-brand font-black italic leading-none">$40</div>
+                        <div class="text-[9px] md:text-[10px] uppercase font-black tracking-widest mt-2 opacity-40" data-t="per_thumb">Per Thumbnail</div>
                     </div>
-                    <div class="space-y-4 mb-10 text-black/60 text-sm font-bold uppercase tracking-tight">
-                        <p data-t="final_price">• Final price after brief</p>
-                        <p data-t="revisions">• 3 Free Revisions</p>
-                    </div>
-                    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-black text-white py-5 rounded-2xl font-black text-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-3 uppercase tracking-tighter mt-auto">
-                        <span data-t="order_now">Order Now</span> <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-black text-white py-4 md:py-5 rounded-2xl font-black text-base md:text-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-3 uppercase mt-auto">
+                        <span data-t="order_now">Order Now</span> <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5"></i>
                     </button>
                 </div>
 
                 <!-- Column 3: FAQ -->
-                <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col reveal-init reveal-right delay-300">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center">
-                            <i data-lucide="help-circle" class="w-6 h-6 text-white"></i>
+                <div class="bg-white/[0.02] border border-white/10 rounded-[2rem] p-6 md:p-10 flex flex-col reveal-init delay-300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="help-circle" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="faq">FAQ</h3>
+                        <h3 class="font-brand text-xl md:text-2xl font-black uppercase italic tracking-wider" data-t="faq">FAQ</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq2_q">Delivery?</p>
-                            <p class="text-xs md:text-sm text-white/70" data-t="faq2_a">Discussed per project, usually 24-48h.</p>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-white/40 mb-1" data-t="faq2_q">Delivery?</p>
+                            <p class="text-xs text-white/70" data-t="faq2_a">24-48h.</p>
                         </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq1_q">Why a strong thumbnail matters?</p>
-                            <p class="text-xs md:text-sm text-white/70" data-t="faq1_a">A strong thumbnail helps your content stand out and increase clicks.</p>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq3_q">Budget?</p>
-                            <p class="text-xs md:text-sm text-white/70" data-t="faq3_a">Always open to discussion.</p>
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-white/40 mb-1" data-t="faq3_q">Budget?</p>
+                            <p class="text-xs text-white/70" data-t="faq3_a">Negotiable.</p>
                         </div>
                     </div>
                 </div>
@@ -463,45 +508,40 @@
     </section>
 
     <!-- About Me -->
-    <section id="about-me-section" class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-40 border-t border-white/5 pointer-events-none">
+    <section id="about-me-section" class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-40 border-t border-white/5 pointer-events-none">
         <div class="pointer-events-auto">
-            <div class="text-center mb-16 md:mb-24 reveal-init">
-                <h2 class="font-brand text-4xl md:text-6xl font-black italic tracking-wider uppercase mb-4 md:mb-6 text-white/90" data-t="about_me">About Me</h2>
-                <div class="h-1 w-16 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            <div class="text-center mb-8 md:mb-24 reveal-init">
+                <h2 class="font-brand text-3xl md:text-6xl font-black italic tracking-wider uppercase mb-2 md:mb-6 text-white/90" data-t="about_me">About Me</h2>
+                <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
             </div>
 
             <div class="relative bg-white/[0.02] border border-white/10 rounded-[2rem] md:rounded-[4rem] overflow-hidden p-6 md:p-20 reveal-init delay-200">
                 <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-white/[0.03] blur-[80px] md:blur-[100px] rounded-full -mr-32 -mt-32 md:-mr-48 md:-mt-48"></div>
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
-                    <div class="space-y-8 md:space-y-12 text-center lg:text-left">
-                        <div class="space-y-4 md:space-y-6">
-                            <h3 class="font-brand text-4xl md:text-6xl font-black italic uppercase tracking-wider leading-tight">Ruslan, 19</h3>
-                        </div>
-
-                        <div class="space-y-6 md:space-y-8 text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
-                            <p data-t="about_desc">I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 pt-4">
-                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6 reveal-init delay-300">
-                                <div class="font-brand text-3xl md:text-5xl font-black italic">5+</div>
-                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight" data-t="years_exp">Years Exp.</div>
+                <div class="relative z-10 flex flex-col lg:flex-row gap-10 md:gap-20 items-center">
+                    <div class="flex-1 text-center lg:text-left">
+                        <h3 class="font-brand text-3xl md:text-6xl font-black italic uppercase tracking-wider mb-6">Ruslan, 19</h3>
+                        <p class="text-base md:text-2xl text-white/60 font-medium mb-10 max-w-lg mx-auto lg:mx-0" data-t="about_desc">I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 pt-4 text-left">
+                            <div class="border-l-2 border-white/10 pl-4">
+                                <div class="font-brand text-2xl md:text-5xl font-black italic">5+</div>
+                                <div class="text-[8px] md:text-[10px] uppercase font-black text-white/30 tracking-widest" data-t="years_exp">Years Exp.</div>
                             </div>
-                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6 reveal-init delay-400">
-                                <div class="font-brand text-3xl md:text-5xl font-black italic">1000+</div>
-                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight" data-t="projects_done">Projects Done</div>
+                            <div class="border-l-2 border-white/10 pl-4">
+                                <div class="font-brand text-2xl md:text-5xl font-black italic">1000+</div>
+                                <div class="text-[8px] md:text-[10px] uppercase font-black text-white/30 tracking-widest" data-t="projects_done">Projects Done</div>
                             </div>
-                            <div class="border-l-0 sm:border-l-2 border-white/10 pl-0 sm:pl-6 reveal-init delay-500">
-                                <div class="font-brand text-3xl md:text-5xl font-black italic">200M+</div>
-                                <div class="text-[9px] md:text-[10px] uppercase font-black text-white/30 tracking-widest leading-tight" data-t="total_views">Total Views</div>
+                            <div class="border-l-2 border-white/10 pl-4 col-span-2 md:col-span-1">
+                                <div class="font-brand text-2xl md:text-5xl font-black italic">200M+</div>
+                                <div class="text-[8px] md:text-[10px] uppercase font-black text-white/30 tracking-widest" data-t="total_views">Total Views</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex flex-col items-center lg:items-end gap-10 md:gap-12 reveal-init reveal-right delay-400">
-                        <img src="assets/logo.png" alt="Dezzzy" class="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-                        <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-base md:text-xl hover:scale-105 transition-all flex items-center justify-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.15)]">
-                            <i data-lucide="shopping-cart" class="w-5 h-5 md:w-6 md:h-6"></i> <span data-t="order_now">ORDER NOW</span>
+                    <div class="flex flex-col items-center gap-6 md:gap-12 reveal-init reveal-right delay-400">
+                        <img src="assets/logo.png" alt="Dezzzy" class="w-32 h-32 md:w-64 md:h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                        <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-white text-black px-8 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-sm md:text-xl shadow-[0_0_50px_rgba(255,255,255,0.15)]">
+                            <span data-t="order_now">ORDER NOW</span>
                         </button>
                     </div>
                 </div>
@@ -510,108 +550,81 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact-section" class="relative z-10 max-w-5xl mx-auto px-4 md:px-6 py-20 md:py-32 border-t border-white/5 pointer-events-none">
+    <section id="contact-section" class="relative z-10 max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-32 border-t border-white/5 pointer-events-none">
         <div class="pointer-events-auto">
-            <div class="text-center mb-12 md:mb-16 reveal-init">
-                <h2 class="font-brand text-4xl md:text-6xl font-black italic tracking-wider uppercase mb-4 md:mb-6" data-t="contact">Contact</h2>
-                <div class="h-1 w-16 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            <div class="text-center mb-8 md:mb-16 reveal-init">
+                <h2 class="font-brand text-3xl md:text-6xl font-black italic tracking-wider uppercase mb-2 md:mb-6" data-t="contact">Contact</h2>
+                <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
             </div>
 
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-6">
-                    <!-- Telegram -->
-                    <a href="https://t.me/dezzzy4" target="_blank" class="group flex items-center gap-5 bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all hover:bg-white/[0.07] hover:border-white/20 reveal-init delay-100">
-                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-                            <i data-lucide="send" class="w-6 h-6 md:w-8 md:h-8"></i>
-                        </div>
-                        <div class="text-left overflow-hidden">
-                            <p class="text-white/40 text-[11px] md:text-sm uppercase font-black tracking-widest mb-1">Telegram</p>
-                            <h3 class="font-brand text-xl md:text-2xl font-black italic uppercase truncate">@dezzzy4</h3>
-                        </div>
-                    </a>
-
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/4915120436294" target="_blank" class="group flex items-center gap-5 bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all hover:bg-white/[0.07] hover:border-white/20 reveal-init delay-200">
-                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-                            <i data-lucide="message-circle" class="w-6 h-6 md:w-8 md:h-8"></i>
-                        </div>
-                        <div class="text-left overflow-hidden">
-                            <p class="text-white/40 text-[11px] md:text-sm uppercase font-black tracking-widest mb-1">WhatsApp</p>
-                            <h3 class="font-brand text-xl md:text-2xl font-black italic uppercase">+49 151 20436294</h3>
-                        </div>
-                    </a>
-
-                    <!-- Discord -->
-                    <div onclick="navigator.clipboard.writeText('dezzzy4'); alert('Discord ID copied!')" class="cursor-pointer group flex items-center gap-5 bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all hover:bg-white/[0.07] hover:border-white/20 reveal-init delay-300">
-                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 md:w-8 md:h-8"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42.001 1.333-.946 2.418-2.157 2.418z"/></svg>
-                        </div>
-                        <div class="text-left overflow-hidden">
-                            <p class="text-white/40 text-[11px] md:text-sm uppercase font-black tracking-widest mb-1">Discord</p>
-                            <h3 class="font-brand text-xl md:text-2xl font-black italic uppercase truncate">dezzzy4</h3>
-                        </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
+                <!-- Contact Card Component -->
+                <div onclick="window.open('https://t.me/dezzzy4', '_blank')" class="group interactive-card flex items-center gap-4 md:gap-5 bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-100">
+                    <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="send" class="w-5 h-5 md:w-8 md:h-8"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <p class="text-white/40 text-[9px] md:text-sm uppercase font-black tracking-widest mb-1 flex items-center gap-2">Telegram <span onclick="event.stopPropagation(); copyValue('@dezzzy4')" class="hover:text-white transition-colors cursor-copy"><i data-lucide="copy" class="w-3 h-3"></i></span></p>
+                        <h3 class="font-brand text-lg md:text-2xl font-black italic uppercase truncate selectable-value">@dezzzy4</h3>
                     </div>
-
-                    <!-- Email -->
-                    <a href="mailto:info@dezzzy.com" class="group flex items-center gap-5 bg-white/[0.03] border border-white/10 rounded-[2rem] p-6 md:p-8 transition-all hover:bg-white/[0.07] hover:border-white/20 reveal-init delay-400">
-                        <div class="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-                            <i data-lucide="mail" class="w-6 h-6 md:w-8 md:h-8"></i>
-                        </div>
-                        <div class="text-left min-w-0">
-                            <p class="text-white/40 text-[11px] md:text-sm uppercase font-black tracking-widest mb-1">Email</p>
-                            <h3 class="font-brand text-base md:text-xl font-black italic uppercase break-all">info@dezzzy.com</h3>
-                        </div>
-                    </a>
+                </div>
+                
+                <div onclick="window.open('https://wa.me/4915120436294', '_blank')" class="group interactive-card flex items-center gap-4 md:gap-5 bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-200">
+                    <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="message-circle" class="w-5 h-5 md:w-8 md:h-8"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <p class="text-white/40 text-[9px] md:text-sm uppercase font-black tracking-widest mb-1 flex items-center gap-2">WhatsApp <span onclick="event.stopPropagation(); copyValue('+49 151 20436294')" class="hover:text-white transition-colors cursor-copy"><i data-lucide="copy" class="w-3 h-3"></i></span></p>
+                        <h3 class="font-brand text-lg md:text-2xl font-black italic uppercase truncate selectable-value">+49 151 20436294</h3>
+                    </div>
                 </div>
 
-                <!-- Order Form (Centered and Resized) -->
-                <div class="flex justify-center mt-2 reveal-init delay-500 reveal-blur">
-                    <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="group relative overflow-hidden bg-white text-black rounded-[2rem] p-6 md:p-8 transition-all hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] w-full sm:w-auto sm:min-w-[400px]">
-                        <div class="text-left">
-                            <h3 class="font-brand text-2xl md:text-3xl font-black italic uppercase leading-none mb-1">Fill the form</h3>
-                            <p class="text-black/40 font-black uppercase tracking-widest text-[10px] md:text-xs">Start your project now</p>
-                        </div>
-                        <div class="w-10 h-10 md:w-14 md:h-14 bg-black/5 rounded-full flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
-                            <i data-lucide="arrow-up-right" class="w-6 h-6 md:w-8 md:h-8"></i>
-                        </div>
-                    </a>
+                <div onclick="copyValue('dezzzy4')" class="group interactive-card flex items-center gap-4 md:gap-5 bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-300">
+                    <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 md:w-8 md:h-8"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42.001 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    </div>
+                    <div class="text-left overflow-hidden">
+                        <p class="text-white/40 text-[9px] md:text-sm uppercase font-black tracking-widest mb-1 flex items-center gap-2">Discord <span class="hover:text-white transition-colors"><i data-lucide="copy" class="w-3 h-3"></i></span></p>
+                        <h3 class="font-brand text-lg md:text-2xl font-black italic uppercase truncate selectable-value">dezzzy4</h3>
+                    </div>
+                </div>
+
+                <div onclick="window.location.href='mailto:info@dezzzy.com'" class="group interactive-card flex items-center gap-4 md:gap-5 bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-400">
+                    <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-5 h-5 md:w-8 md:h-8"></i></div>
+                    <div class="text-left overflow-hidden">
+                        <p class="text-white/40 text-[9px] md:text-sm uppercase font-black tracking-widest mb-1 flex items-center gap-2">Email <span onclick="event.stopPropagation(); copyValue('info@dezzzy.com')" class="hover:text-white transition-colors cursor-copy"><i data-lucide="copy" class="w-3 h-3"></i></span></p>
+                        <h3 class="font-brand text-sm md:text-xl font-black italic uppercase truncate selectable-value">info@dezzzy.com</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <!-- Form Button -->
+            <div class="flex justify-center reveal-init delay-500">
+                <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="group relative overflow-hidden bg-white text-black rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-6 shadow-2xl w-full sm:w-auto sm:min-w-[400px]">
+                    <div class="text-left">
+                        <h3 class="font-brand text-xl md:text-3xl font-black italic uppercase leading-none mb-1">Fill the form</h3>
+                        <p class="text-black/40 font-black uppercase tracking-widest text-[8px] md:text-xs">Start your project now</p>
+                    </div>
+                    <div class="w-8 h-8 md:w-14 md:h-14 bg-black/5 rounded-full flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200">
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 md:w-8 md:h-8"></i>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 p-12 md:p-24 border-t border-white/5 text-center pointer-events-none">
+    <footer class="relative z-10 p-8 md:p-24 border-t border-white/5 text-center pointer-events-none">
         <div class="pointer-events-auto">
-            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 mb-12 md:mb-16 px-4">
-                <!-- X -->
-                <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn transition-all">
-                    <img src="assets/xlogo.png" alt="X" class="w-7 h-7 md:w-8 md:h-8 object-contain invert opacity-40 hover:opacity-100">
-                </a>
-                <!-- YouTube -->
-                <a href="https://youtube.com/@DezzzyDesign" target="_blank" class="social-icon-btn transition-all">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="#7c7c7c" class="w-8 h-8 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <!-- Instagram -->
-                <a href="https://instagram.com/dezzzy.design" target="_blank" class="social-icon-btn transition-all">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c7c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                </a>
-                <!-- TikTok -->
-                <a href="https://tiktok.com/@dezzzycom" target="_blank" class="social-icon-btn transition-all">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="#7c7c7c" class="w-8 h-8 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.3a3.34 3.34 0 0 0-1.61 3.12c.04.5.17.99.39 1.44.42.92 1.25 1.63 2.21 1.94.88.29 1.86.2 2.64-.32.96-.59 1.55-1.64 1.63-2.76.03-4.07-.01-8.14.01-12.21z"/></svg>
-                </a>
-                <!-- Behance -->
-                <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn transition-all">
-                    <img src="assets/behancelogo.png" alt="Behance" class="w-9 h-9 md:w-12 md:h-12 object-contain invert opacity-40 hover:opacity-100">
-                </a>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 mb-8 md:mb-16 px-4">
+                <a href="https://x.com/DezzzyDesign" target="_blank" class="social-icon-btn transition-all"><img src="assets/xlogo.png" alt="X" class="w-6 h-6 md:w-8 md:h-8 invert opacity-40 hover:opacity-100 transition-opacity duration-100"></a>
+                <a href="https://youtube.com/@DezzzyDesign" target="_blank" class="social-icon-btn transition-all"><svg width="32" height="32" viewBox="0 0 24 24" fill="#7c7c7c" class="w-6 h-6 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-100"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                <a href="https://instagram.com/dezzzy.design" target="_blank" class="social-icon-btn transition-all"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c7c7c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-100"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="https://tiktok.com/@dezzzycom" target="_blank" class="social-icon-btn transition-all"><svg width="32" height="32" viewBox="0 0 24 24" fill="#7c7c7c" class="w-6 h-6 md:w-10 md:h-10 opacity-60 hover:opacity-100 transition-opacity duration-100"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.3a3.34 3.34 0 0 0-1.61 3.12c.04.5.17.99.39 1.44.42.92 1.25 1.63 2.21 1.94.88.29 1.86.2 2.64-.32.96-.59 1.55-1.64 1.63-2.76.03-4.07-.01-8.14.01-12.21z"/></svg></a>
+                <a href="https://www.behance.net/dezzzy" target="_blank" class="social-icon-btn transition-all"><img src="assets/behancelogo.png" alt="Behance" class="w-7 h-7 md:w-12 md:h-12 invert opacity-40 hover:opacity-100 transition-opacity duration-100"></a>
             </div>
             <p class="text-white/10 text-[9px] md:text-[11px] font-bold tracking-[0.5em] uppercase leading-loose px-4">DEZZZY DESIGN — © 2026</p>
         </div>
     </footer>
 
     <div id="lightbox"><img src="" id="lightbox-img"></div>
+    <div id="copy-toast" class="copy-toast">Copied to clipboard!</div>
 
     <script>
         const allFiles = [
@@ -644,6 +657,13 @@
         const portfolioPool = [...bItems, ...regItems];
 
         lucide.createIcons();
+
+        function copyValue(val) {
+            navigator.clipboard.writeText(val);
+            const toast = document.getElementById('copy-toast');
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 2000);
+        }
         
         // Scroll Progress
         window.addEventListener('scroll', () => {
@@ -698,7 +718,7 @@
             
             const start = rowIndex * itemsPerSet;
             const rowItems = portfolioPool.slice(start, start + itemsPerSet);
-            if (rowItems.length === 0) return; // Skip empty rows
+            if (rowItems.length === 0) return;
             
             const createItem = (name) => {
                 const div = document.createElement('div');
@@ -711,26 +731,18 @@
                 return div;
             };
 
-            // 3 sets for infinite loop
             [...rowItems, ...rowItems, ...rowItems].forEach(name => el.appendChild(createItem(name)));
 
             const updateInfinite = () => {
                 const firstItem = el.children[0];
                 if (!firstItem) return;
-                
                 const itemWidth = firstItem.getBoundingClientRect().width;
                 const gap = parseFloat(getComputedStyle(el).gap) || 0;
                 const setWidth = (itemWidth + gap) * rowItems.length;
-                
-                if (el.scrollLeft >= setWidth * 2) {
-                    el.scrollLeft -= setWidth;
-                } else if (el.scrollLeft <= 0) {
-                    el.scrollLeft += setWidth;
-                }
+                if (el.scrollLeft >= setWidth * 2) { el.scrollLeft -= setWidth; } 
+                else if (el.scrollLeft <= 0) { el.scrollLeft += setWidth; }
             };
-
             el.addEventListener('scroll', updateInfinite);
-            
             requestAnimationFrame(() => {
                 setTimeout(() => {
                     const firstItem = el.children[0];
@@ -748,12 +760,9 @@
             if (!el) return;
             const item = el.children[0];
             if (!item) return;
-            
             const itemWidth = item.getBoundingClientRect().width;
             const gap = parseFloat(getComputedStyle(el).gap) || 0;
-            const scrollAmount = itemWidth + gap;
-            
-            el.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+            el.scrollBy({ left: dir * (itemWidth + gap), behavior: 'smooth' });
         }
 
         document.getElementById('lightbox').onclick = () => document.getElementById('lightbox').style.display = 'none';
@@ -764,34 +773,22 @@
         const bLayer = document.getElementById('before-layer');
         const handle = document.getElementById('slider-handle');
 
-        // Preload slider images
-        const preloadedImages = {};
-        sliderPairs.forEach(p => {
-            const imgB = new Image(); imgB.src = 'assets/' + p.b; preloadedImages[p.b] = imgB;
-            const imgA = new Image(); imgA.src = 'assets/' + p.a; preloadedImages[p.a] = imgA;
-        });
-
         function updateSlider() {
             if (sliderPairs.length > 0) {
                 const p = sliderPairs[curIdx];
                 aLayer.style.opacity = 0;
-                // Use preloaded images if ready, otherwise normal swap
                 setTimeout(() => { 
                     bLayer.src = 'assets/' + p.b; 
                     aLayer.src = 'assets/' + p.a; 
                     aLayer.style.opacity = 1; 
-
-                    // Включаем плавность для возврата
                     slider.classList.add('resetting');
                     aLayer.style.clipPath = `inset(0 0 0 50%)`;
                     handle.style.left = '50%';
-                    // Убираем класс через время анимации
                     setTimeout(() => slider.classList.remove('resetting'), 500);
                 }, 150);
             }
         }
         updateSlider();
-
         document.getElementById('prev-slider').onclick = () => { curIdx = (curIdx - 1 + sliderPairs.length) % sliderPairs.length; updateSlider(); };
         document.getElementById('next-slider').onclick = () => { curIdx = (curIdx + 1) % sliderPairs.length; updateSlider(); };
 
@@ -799,7 +796,6 @@
         function handleMove(e) {
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    // При ручном движении убираем плавность, чтобы не было задержки
                     slider.classList.remove('resetting');
                     const rect = slider.getBoundingClientRect();
                     const pageX = (e.pageX || (e.touches ? e.touches[0].pageX : 0));
@@ -816,221 +812,35 @@
         slider.addEventListener('mousemove', handleMove);
         slider.addEventListener('touchmove', handleMove, {passive: true});
 
-        // Translation System
         const translations = {
-            en: {
-                portfolio: "Portfolio",
-                price_info: "Price & Info",
-                about_me: "About Me",
-                before_after: "Before / After",
-                contact: "Contact",
-                order_now: "ORDER NOW",
-                start: "Start",
-                pricing: "Pricing",
-                faq: "FAQ",
-                from: "From",
-                per_thumb: "Per Thumbnail",
-                final_price: "Final price after brief",
-                revisions: "3 Free Revisions",
-                start_project: "Start project",
-                get_started_desc: "To get started, please provide the following details when contacting me:",
-                channel_link: "Channel link",
-                brief_ideas: "Brief & Ideas",
-                assets_refs: "Assets & Refs",
-                deadline: "Deadline",
-                more_details: "The more details you share, the better the result.",
-                faq1_q: "Why a strong thumbnail matters?",
-                faq1_a: "A thumbnail is the first thing people see before deciding whether to watch your video. A strong thumbnail helps your content stand out, grab attention, and increase clicks.",
-                faq2_q: "Delivery time?",
-                faq2_a: "Discussed per project, usually 24-48h.",
-                faq3_q: "Budget?",
-                faq3_a: "Always open to discussion.",
-                about_desc: "I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.",
-                years_exp: "Years<br>Exp.",
-                projects_done: "Projects<br>Done",
-                total_views: "Total<br>Views",
-                fill_form: "Fill the form",
-                start_now: "Start your project now"
-            },
-            ru: {
-                portfolio: "Портфолио",
-                price_info: "Цены и Инфо",
-                about_me: "Обо мне",
-                contact: "Контакты",
-                order_now: "ЗАКАЗАТЬ",
-                start: "Начало",
-                pricing: "Цены",
-                faq: "FAQ",
-                from: "От",
-                per_thumb: "За превью",
-                final_price: "Финальная цена после брифа",
-                revisions: "3 правки бесплатно",
-                start_project: "Начать проект",
-                get_started_desc: "Для начала работы подготовьте следующее:",
-                channel_link: "Ссылка на канал",
-                brief_ideas: "Бриф и идеи",
-                assets_refs: "Исходники и рефы",
-                deadline: "Дедлайн",
-                more_details: "Чем больше деталей, тем лучше результат.",
-                faq1_q: "Почему важно крутое превью?",
-                faq1_a: "Превью — это первое, что видит зритель. Оно помогает выделиться и повышает CTR вашего видео.",
-                faq2_q: "Сроки выполнения?",
-                faq2_a: "Обсуждаются индивидуально, обычно 24-48ч.",
-                faq3_q: "Бюджет?",
-                faq3_a: "Всегда готов к обсуждению.",
-                about_desc: "Создаю превью для YouTube более 5 лет. Помогаю захватить внимание зрителя через продуманный дизайн.",
-                years_exp: "Лет<br>опыта",
-                projects_done: "Проектов<br>сделано",
-                total_views: "Всего<br>просмотров",
-                fill_form: "Заполнить форму",
-                start_now: "Начните свой проект сейчас"
-            },
-            ua: {
-                portfolio: "Портфоліо",
-                price_info: "Ціни та Інфо",
-                about_me: "Про мене",
-                contact: "Контакти",
-                order_now: "ЗАМОВИТИ",
-                start: "Початок",
-                pricing: "Ціни",
-                faq: "FAQ",
-                from: "Від",
-                per_thumb: "За прев'ю",
-                final_price: "Фінальна ціна після брифу",
-                revisions: "3 правки безкоштовно",
-                start_project: "Почати проект",
-                get_started_desc: "Для початку роботи підготуйте наступне:",
-                channel_link: "Посилання на канал",
-                brief_ideas: "Бриф та ідеї",
-                assets_refs: "Вихідні дані та рефи",
-                deadline: "Дедлайн",
-                more_details: "Чим більше деталей, тим кращий результат.",
-                faq1_q: "Чому важливо круте прев'ю?",
-                faq1_a: "Прев'ю — це перше, що бачить глядач. Воно допомагає виділитися та підвищує CTR вашого відео.",
-                faq2_q: "Терміни виконання?",
-                faq2_a: "Обговорюються індивідуально, зазвичай 24-48г.",
-                faq3_q: "Бюджет?",
-                faq3_a: "Завжди відкритий до обговорення.",
-                about_desc: "Створюю прев'ю для YouTube більше 5 років. Допомагаю захопити увагу глядача через продуманий дизайн.",
-                years_exp: "Років<br>досвіду",
-                projects_done: "Проектів<br>виконано",
-                total_views: "Всього<br>переглядів",
-                fill_form: "Заповнити форму",
-                start_now: "Почніть свій проект зараз"
-            },
-            es: {
-                portfolio: "Portafolio",
-                price_info: "Precios e Info",
-                about_me: "Sobre mí",
-                contact: "Contacto",
-                order_now: "PEDIR AHORA",
-                start: "Inicio",
-                pricing: "Precios",
-                faq: "FAQ",
-                from: "Desde",
-                per_thumb: "Por miniatura",
-                final_price: "Precio final tras el brief",
-                revisions: "3 revisiones gratis",
-                start_project: "Iniciar proyecto",
-                get_started_desc: "Para empezar, por favor proporcione:",
-                channel_link: "Link del canal",
-                brief_ideas: "Brief e ideas",
-                assets_refs: "Recursos y refs",
-                deadline: "Plazo",
-                more_details: "Cuantos más detalles, mejor el resultado.",
-                faq1_q: "¿Por qué es importante una buena miniatura?",
-                faq1_a: "La miniatura es lo primero que ve la gente. Ayuda a destacar y aumenta los clics.",
-                faq2_q: "¿Tiempo de entrega?",
-                faq2_a: "Se discute por proyecto, usualmente 24-48h.",
-                faq3_q: "¿Presupuesto?",
-                faq3_a: "Siempre abierto a discusión.",
-                about_desc: "He creado miniaturas para YouTube por más de 5 años. Ayudo a captar la atención mediante el diseño.",
-                years_exp: "Años<br>Exp.",
-                projects_done: "Proyectos<br>Hechos",
-                total_views: "Vistas<br>Totales",
-                fill_form: "Llenar formulario",
-                start_now: "Empieza tu proyecto ahora"
-            },
-            de: {
-                portfolio: "Portfolio",
-                price_info: "Preise & Info",
-                about_me: "Über mich",
-                contact: "Kontakt",
-                order_now: "JETZT BESTELLEN",
-                start: "Start",
-                pricing: "Preise",
-                faq: "FAQ",
-                from: "Ab",
-                per_thumb: "Pro Thumbnail",
-                final_price: "Endpreis nach Briefing",
-                revisions: "3 kostenlose Revisionen",
-                start_project: "Projekt starten",
-                get_started_desc: "Um zu beginnen, benötigen wir:",
-                channel_link: "Kanal-Link",
-                brief_ideas: "Briefing & Ideen",
-                assets_refs: "Assets & Referenzen",
-                deadline: "Deadline",
-                more_details: "Je mehr Details, desto besser das Ergebnis.",
-                faq1_q: "Warum ist ein gutes Thumbnail wichtig?",
-                faq1_a: "Das Thumbnail ist das Erste, was Leute sehen. Es hilft aufzufallen und Klicks zu generieren.",
-                faq2_q: "Lieferzeit?",
-                faq2_a: "Abhängig vom Projekt, meist 24-48 Std.",
-                faq3_q: "Budget?",
-                faq3_a: "Immer offen für Diskussionen.",
-                about_desc: "Ich erstelle seit über 5 Jahren YouTube-Thumbnails. Ich helfe, Aufmerksamkeit durch Design zu gewinnen.",
-                years_exp: "Jahre<br>Erf.",
-                projects_done: "Projekte<br>Fertig",
-                total_views: "Gesamt<br>ansichten",
-                fill_form: "Formular ausfüllen",
-                start_now: "Starten Sie jetzt Ihr Projekt"
-            }
+            en: { portfolio: "Portfolio", price_info: "Price & Info", about_me: "About Me", before_after: "Before / After", contact: "Contact", order_now: "ORDER NOW", start: "Start", pricing: "Pricing", faq: "FAQ", from: "From", per_thumb: "Per Thumbnail", final_price: "Final price after brief", revisions: "3 Free Revisions", start_project: "Start project", get_started_desc: "Prepare these details:", channel_link: "Channel link", brief_ideas: "Brief & Ideas", assets_refs: "Assets & Refs", deadline: "Deadline", more_details: "The more details, the better.", about_desc: "I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.", years_exp: "Years<br>Exp.", projects_done: "Projects<br>Done", total_views: "Total<br>Views" },
+            ru: { portfolio: "Портфолио", price_info: "Цены и Инфо", about_me: "Обо мне", contact: "Контакты", order_now: "ЗАКАЗАТЬ", start: "Начало", pricing: "Цены", faq: "FAQ", from: "От", per_thumb: "За превью", final_price: "Финальная цена после брифа", revisions: "3 правки бесплатно", start_project: "Начать проект", get_started_desc: "Подготовьте следующее:", channel_link: "Ссылка на канал", brief_ideas: "Бриф и идеи", assets_refs: "Исходники и рефы", deadline: "Дедлайн", more_details: "Чем больше деталей, тем лучше.", about_desc: "Создаю превью для YouTube более 5 лет. Помогаю захватить внимание зрителя через продуманный дизайн.", years_exp: "Лет<br>опыта", projects_done: "Проектов<br>сделано", total_views: "Всего<br>просмотров" },
+            ua: { portfolio: "Портфоліо", price_info: "Ціни та Інфо", about_me: "Про мене", contact: "Контакти", order_now: "ЗАМОВИТИ", start: "Початок", pricing: "Ціни", faq: "FAQ", from: "Від", per_thumb: "За прев'ю", final_price: "Фінальна ціна після брифу", revisions: "3 правки безкоштовно", start_project: "Почати проект", get_started_desc: "Підготуйте наступне:", channel_link: "Посилання на канал", brief_ideas: "Бриф та ідеї", assets_refs: "Вихідні дані та рефи", deadline: "Дедлайн", more_details: "Чим більше деталей, тим краще.", about_desc: "Створюю прев'ю для YouTube більше 5 років. Допомагаю захопити увагу глядача через продуманий дизайн.", years_exp: "Років<br>досвіду", projects_done: "Проектів<br>виконано", total_views: "Всього<br>переглядів" },
+            es: { portfolio: "Portafolio", price_info: "Precios e Info", about_me: "Sobre mí", contact: "Contacto", order_now: "PEDIR AHORA", start: "Inicio", pricing: "Precios", faq: "FAQ", from: "Desde", per_thumb: "Por miniatura", final_price: "Precio final tras el brief", revisions: "3 revisiones gratis", start_project: "Iniciar proyecto", get_started_desc: "Prepara estos detalles:", channel_link: "Link del canal", brief_ideas: "Brief e ideas", assets_refs: "Recursos y refs", deadline: "Plazo", more_details: "Cuantos más detalles, mejor.", about_desc: "He creado miniaturas para YouTube por más de 5 años. Ayudo a captar la atención mediante el diseño.", years_exp: "Años<br>Exp.", projects_done: "Proyectos<br>Hechos", total_views: "Vistas<br>Totales" },
+            de: { portfolio: "Portfolio", price_info: "Preise & Info", about_me: "Über mich", contact: "Kontakt", order_now: "JETZT BESTELLEN", start: "Start", pricing: "Preise", faq: "FAQ", from: "Ab", per_thumb: "Pro Thumbnail", final_price: "Endpreis nach Briefing", revisions: "3 kostenlose Revisionen", start_project: "Projekt starten", get_started_desc: "Bereiten Sie dies vor:", channel_link: "Kanal-Link", brief_ideas: "Briefing & Ideen", assets_refs: "Assets & Referenzen", deadline: "Deadline", more_details: "Je mehr Details, desto besser.", about_desc: "Ich erstelle seit über 5 Jahren YouTube-Thumbnails. Ich helфе, Aufmerksamkeit durch Design zu gewinnen.", years_exp: "Jahre<br>Erf.", projects_done: "Projekte<br>Fertig", total_views: "Gesamt<br>ansichten" }
         };
 
         function setLanguage(lang) {
             document.querySelectorAll('[data-t]').forEach(el => {
                 const key = el.getAttribute('data-t');
-                if (translations[lang] && translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
             });
-            
-            // Update all language indicators
             const langCode = lang === 'de' ? 'DE' : lang.toUpperCase();
             document.getElementById('current-lang').innerText = langCode;
             const heroLang = document.querySelector('.hero-current-lang');
             if (heroLang) heroLang.innerText = langCode;
-            
-            // Highlight active language in all selectors
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('bg-white/20', 'text-white');
-                    btn.classList.remove('text-white/40');
-                } else {
-                    btn.classList.remove('bg-white/20', 'text-white');
-                    btn.classList.add('text-white/40');
-                }
-            });
-            
             localStorage.setItem('preferred_lang', lang);
         }
 
-        // Animation Controller
         const animationObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                } else {
-                    entry.target.classList.remove('reveal-visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
+                else entry.target.classList.remove('reveal-visible');
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.reveal-init').forEach(el => animationObserver.observe(el));
-
-        // Entrance Sequence
         window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-            // Trigger hero animations immediately if they are in view
             setTimeout(() => {
                 document.querySelectorAll('.reveal-init').forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -1039,7 +849,6 @@
             }, 100);
         });
 
-        // Initialize from local storage or default to EN
         const savedLang = localStorage.getItem('preferred_lang') || 'en';
         setLanguage(savedLang);
     </script>

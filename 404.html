@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Dezzzy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #020202; color: white; overflow: hidden; margin: 0; }
+        .font-brand { font-family: 'Montserrat', sans-serif; }
+        
+        .white-flare {
+            position: fixed;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float { 
+            0%, 100% { transform: translate(0, 0); } 
+            33% { transform: translate(30px, -50px); } 
+            66% { transform: translate(-20px, 20px); } 
+        }
+        .animate-float { animation: float 15s ease-in-out infinite; }
+
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Кнопка в стиле ORDER NOW */
+        .btn-primary {
+            background: white;
+            color: black;
+            padding: 1rem 2rem;
+            border-radius: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 20px 80px rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary:hover { transform: scale(1.05); }
+        .btn-primary:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <!-- Фоновые свечения как на главном -->
+    <div class="white-flare animate-float" style="top: -10vw; right: -10vw; opacity: 0.08;"></div>
+    <div class="white-flare animate-float" style="bottom: -10vw; left: -10vw; opacity: 0.08; animation-delay: -5s;"></div>
+
+    <div class="relative z-10 text-center px-6">
+        <!-- Большая фоновая надпись 404 -->
+        <h1 class="font-brand text-[12rem] md:text-[20rem] font-black italic opacity-[0.03] leading-none select-none">404</h1>
+        
+        <!-- Основной контент -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <div class="mb-8">
+                <img src="assets/logo.png" alt="Dezzzy" class="h-12 md:h-16 w-auto object-contain opacity-20">
+            </div>
+            
+            <h2 class="font-brand text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-4">
+                Lost in Space?
+            </h2>
+            
+            <p class="text-white/40 text-sm md:text-lg mb-12 max-w-md mx-auto">
+                The page you are looking for doesn't exist or has been moved to another dimension.
+            </p>
+            
+            <a href="index.html" class="btn-primary">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> 
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
