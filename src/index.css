@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #ffffff;
+  --color-accent-glow: rgba(255, 255, 255, 0.5);
+  
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 25s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#050505] text-white selection:bg-white/20;
+    margin: 0;
+    font-family: sans-serif;
+  }
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.glow-box {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
