@@ -10,6 +10,22 @@
 
       gtag('config', 'AW-18307852181');
     </script>
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined' && url) {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18307852181/nVKOCJzQy8wcEJXP7plE',
+          'value': 1.0,
+          'currency': 'UAH',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found | Dezzzy</title>

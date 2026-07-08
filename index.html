@@ -10,6 +10,22 @@
 
       gtag('config', 'AW-18307852181');
     </script>
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined' && url) {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18307852181/nVKOCJzQy8wcEJXP7plE',
+          'value': 1.0,
+          'currency': 'UAH',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dezzzy | Thumbnail Designer</title>
@@ -629,7 +645,7 @@
                 <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
-                <div onclick="window.open('https://t.me/dezzzy4', '_blank')" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-100">
+                <div onclick="gtag_report_conversion(); window.open('https://t.me/dezzzy4', '_blank')" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-100">
                     <div class="flex items-center gap-4 md:gap-5 overflow-hidden">
                         <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="send" class="w-5 h-5 md:w-8 md:h-8"></i></div>
                         <div class="text-left overflow-hidden">
@@ -641,7 +657,7 @@
                         <i data-lucide="copy" class="w-4 h-4 md:w-5 md:h-5"></i>
                     </button>
                 </div>
-                <div onclick="window.open('https://wa.me/4915120436294', '_blank')" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-200">
+                <div onclick="gtag_report_conversion(); window.open('https://wa.me/4915120436294', '_blank')" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-200">
                     <div class="flex items-center gap-4 md:gap-5 overflow-hidden">
                         <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="message-circle" class="w-5 h-5 md:w-8 md:h-8"></i></div>
                         <div class="text-left overflow-hidden">
@@ -667,7 +683,7 @@
                         <i data-lucide="copy" class="w-4 h-4 md:w-5 md:h-5"></i>
                     </button>
                 </div>
-                <div onclick="window.location.href='mailto:info@dezzzy.com'" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-400">
+                <div onclick="gtag_report_conversion(); window.location.href='mailto:info@dezzzy.com'" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-400">
                     <div class="flex items-center gap-4 md:gap-5 overflow-hidden">
                         <div class="icon-box w-10 h-10 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-2xl flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-5 h-5 md:w-8 md:h-8"></i></div>
                         <div class="text-left overflow-hidden">
@@ -683,7 +699,7 @@
 
             <!-- Form Button (Moved back here) -->
             <div class="flex justify-center mt-12 reveal-init delay-500">
-                <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" class="group relative overflow-hidden bg-white text-black rounded-[2rem] p-6 md:p-8 transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] w-full sm:w-auto sm:min-w-[400px]">
+                <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" onclick="gtag_report_conversion()" class="group relative overflow-hidden bg-white text-black rounded-[2rem] p-6 md:p-8 transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] w-full sm:w-auto sm:min-w-[400px]">
                     <div class="text-left">
                         <h3 class="font-brand text-2xl md:text-3xl font-black italic uppercase leading-none mb-1" data-t="fill_form">Fill the form</h3>
                         <p class="text-black/40 font-black uppercase tracking-widest text-[10px] md:text-xs" data-t="start_now">Start your project now</p>
@@ -754,6 +770,9 @@
 
         function copyValue(val) {
             navigator.clipboard.writeText(val);
+            if (typeof gtag_report_conversion === 'function') {
+                gtag_report_conversion();
+            }
             const toast = document.getElementById('copy-toast');
             toast.classList.add('visible');
             setTimeout(() => toast.classList.remove('visible'), 2000);
