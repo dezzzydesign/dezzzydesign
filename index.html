@@ -764,9 +764,9 @@
             return array;
         }
 
-        const bItems = shuffle(allFiles.filter(f => f.startsWith('b_')));
-        const regItems = shuffle(allFiles.filter(f => !f.startsWith('b_') && !f.includes('before') && !f.includes('after')));
-        const portfolioPool = [...bItems, ...regItems];
+        const bItems = allFiles.filter(f => f.startsWith('b_'));
+        const regItems = allFiles.filter(f => !f.startsWith('b_') && !f.includes('before') && !f.includes('after'));
+        const portfolioPool = shuffle([...bItems, ...regItems]);
 
         lucide.createIcons();
 
