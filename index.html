@@ -739,21 +739,22 @@
     <script>
         const allFiles = [
             '233f2f32.jpg', '2f332f32f.jpg', '32a23a.jpg', '345346436.jpg', '3f23fgf.jpg',
-            'after1_nomore.jpg', 'after2_fdfsd.jpg', 'after3_srsgd.jpg', 'after4_fgsdsd.jpg',
-            'before2_gsdsg.jpg', 'before3_erwrr.jpg', 'before4_fwefw.jpg',
+            'after2_fdfsd.jpg', 'after4_fgsdsd.jpg',
+            'before2_gsdsg.jpg', 'before4_fwefw.jpg',
+            'before22112.jpg', 'after12d12d22.jpg', 'b_after12d12d22.jpg',
             'b_.jpg', 'b_dfgfgs.jpg', 'b_dirty_buffet_ver2.jpg', 'b_dirty_buffet.jpg', 'b_f323f232f.jpg', 'b_fdgsdfds.jpg',
             'b_fgssg.jpg', 'b_gfdssgd.jpg', 'b_gfsdsgd.jpg', 'b_goat_yoga_2.jpg', 'b_horse_therapy.jpg',
-            'b_photo_2025-10-04_16-00-08.jpg', 'b_photo_2026-01-20_13-08-26_4.jpg', 'b_photo_2026-01-20_13-08-26.jpg',
+            'b_photo_2026-01-20_13-08-26_4.jpg', 'b_photo_2026-01-20_13-08-26.jpg',
             'b_subway_new.jpg', 'b_worst_vs_best_buffet_new.jpg',
-            'egrrverv.jpg', 'fgserg.jpg', 'oreo+chili.jpg', 'photo_2025-10-04_15-59-12.jpg', 'sardine+nutella.jpg',
+            'egrrverv.jpg', 'oreo+chili.jpg', 'photo_2025-10-04_15-59-12.jpg', 'sardine+nutella.jpg',
             '3nppyaxm.jpg', '3bsd9muk.jpg', 'wxnsd00r.jpg', '0pp4bnj3.jpg', 'r4d5rppz.jpg', 'yzqyftw4.jpg',
             '9dj914ls.jpg', '9k5wjpdm.jpg', '66sjnyuu.jpg', 'holdgmml.jpg', '8cwdtog6.jpg', 'rzf0dbf0.jpg'
         ];
 
         const sliderPairs = [
-            { b: allFiles.find(f => f.includes('before2')), a: allFiles.find(f => f.includes('after2')) },
-            { b: allFiles.find(f => f.includes('before3')), a: allFiles.find(f => f.includes('after3')) },
-            { b: allFiles.find(f => f.includes('before4')), a: allFiles.find(f => f.includes('after4')) }
+            { b: 'before2_gsdsg.jpg', a: 'after2_fdfsd.jpg' },
+            { b: 'before22112.jpg', a: 'after12d12d22.jpg' },
+            { b: 'before4_fwefw.jpg', a: 'after4_fgsdsd.jpg' }
         ].filter(p => p.b && p.a);
 
         function shuffle(array) {
