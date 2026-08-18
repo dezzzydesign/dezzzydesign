@@ -1250,35 +1250,49 @@
         // Floating Support Widget logic
         function toggleSupportWidget() {
             const card = document.getElementById('support-card');
-            const icon = document.getElementById('support-toggle-icon');
+            const iconMsg = document.getElementById('icon-message');
+            const iconClose = document.getElementById('icon-close');
             const btn = document.getElementById('support-toggle-btn');
             
             const isOpen = card.classList.contains('active');
             if (isOpen) {
                 card.classList.remove('active');
-                icon.setAttribute('data-lucide', 'message-square');
                 btn.classList.add('support-pulse');
+                
+                // Show message icon, hide close icon
+                iconMsg.style.transform = 'scale(1) rotate(0deg)';
+                iconMsg.style.opacity = '1';
+                iconClose.style.transform = 'scale(0.5) rotate(-90deg)';
+                iconClose.style.opacity = '0';
             } else {
                 card.classList.add('active');
-                icon.setAttribute('data-lucide', 'x');
                 btn.classList.remove('support-pulse');
+                
+                // Hide message icon, show close icon
+                iconMsg.style.transform = 'scale(0.5) rotate(90deg)';
+                iconMsg.style.opacity = '0';
+                iconClose.style.transform = 'scale(1) rotate(0deg)';
+                iconClose.style.opacity = '1';
             }
-            lucide.createIcons();
         }
 
         // Close widget if clicked outside
         window.addEventListener('click', (e) => {
             const container = document.getElementById('support-widget-container');
             const card = document.getElementById('support-card');
-            const icon = document.getElementById('support-toggle-icon');
+            const iconMsg = document.getElementById('icon-message');
+            const iconClose = document.getElementById('icon-close');
             const btn = document.getElementById('support-toggle-btn');
             
             if (container && !container.contains(e.target)) {
                 if (card && card.classList.contains('active')) {
                     card.classList.remove('active');
-                    icon.setAttribute('data-lucide', 'message-square');
                     btn.classList.add('support-pulse');
-                    lucide.createIcons();
+                    
+                    iconMsg.style.transform = 'scale(1) rotate(0deg)';
+                    iconMsg.style.opacity = '1';
+                    iconClose.style.transform = 'scale(0.5) rotate(-90deg)';
+                    iconClose.style.opacity = '0';
                 }
             }
         });
@@ -1341,8 +1355,13 @@
         </div>
         
         <!-- Toggle Button -->
-        <button id="support-toggle-btn" onclick="toggleSupportWidget()" class="w-14 h-14 md:w-16 md:h-16 bg-white text-black rounded-full flex items-center justify-center cursor-pointer shadow-[0_10px_35px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 relative z-10 support-pulse">
-            <i data-lucide="message-square" id="support-toggle-icon" class="w-6 h-6 md:w-7 md:h-7 transition-transform duration-300"></i>
+        <button id="support-toggle-btn" onclick="toggleSupportWidget()" class="w-14 h-14 md:w-16 md:h-16 bg-white text-black rounded-full flex items-center justify-center cursor-pointer shadow-[0_10px_35px_rgba(255,255,255,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 relative z-10 support-pulse pointer-events-auto">
+            <div class="relative w-6 h-6 md:w-7 md:h-7 pointer-events-none">
+                <!-- Icon 1: Message -->
+                <i data-lucide="message-square" id="icon-message" class="w-full h-full absolute inset-0 transition-all duration-300 transform scale-100 opacity-100 flex items-center justify-center"></i>
+                <!-- Icon 2: Close -->
+                <i data-lucide="x" id="icon-close" class="w-full h-full absolute inset-0 transition-all duration-300 transform scale-50 opacity-0 flex items-center justify-center" style="transform: scale(0.5) rotate(-90deg);"></i>
+            </div>
         </button>
     </div>
 
