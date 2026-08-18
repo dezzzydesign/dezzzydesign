@@ -639,38 +639,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Start Info banner (horizontal, full-width) -->
-            <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mt-12 max-w-5xl mx-auto reveal-init delay-300">
-                <div class="flex items-center gap-4 lg:flex-col lg:items-start flex-shrink-0">
-                    <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center"><i data-lucide="info" class="w-6 h-6 text-white"></i></div>
-                    <div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider text-white" data-t="start">Start</h3>
-                        <p class="text-[9px] text-white/35 uppercase font-black tracking-widest italic mt-1" data-t="more_details">The more details you share, the better.</p>
-                    </div>
-                </div>
-                <div class="flex-1 w-full">
-                    <p class="text-white/70 text-xs md:text-sm mb-6 leading-relaxed" data-t="get_started_desc">To get started, please provide the following details when contacting me:</p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
-                            <i data-lucide="link-2" class="w-4 h-4 text-white/50"></i>
-                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="channel_link">Channel link</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
-                            <i data-lucide="file-text" class="w-4 h-4 text-white/50"></i>
-                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="brief_ideas">Brief & Ideas</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
-                            <i data-lucide="image" class="w-4 h-4 text-white/50"></i>
-                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="assets_refs">Assets & Refs</span>
-                        </div>
-                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
-                            <i data-lucide="calendar" class="w-4 h-4 text-white/50"></i>
-                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="deadline">Deadline</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -715,31 +683,6 @@
             </div>
         </div>
     </section>
-
-    <!-- FAQ Section -->
-    <section id="faq-section" class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-24 pointer-events-none">
-        <div class="pointer-events-auto">
-            <div class="text-center mb-8 md:mb-16 reveal-init">
-                <h2 class="font-brand text-3xl md:text-6xl font-black italic tracking-wider uppercase mb-2 md:mb-6" data-t="faq">FAQ</h2>
-                <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-init delay-200">
-                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
-                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq1_q">Standard vs Pro: what is the difference?</h3>
-                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq1_a">Pro tier offers 2 concepts for A/B testing, priority delivery (6-24h), priority 24/7 support, more revisions (6 instead of 3), and higher production quality.</p>
-                </div>
-                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
-                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq2_q">Delivery time?</h3>
-                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq2_a">Standard package delivery takes 24-72 hours. Pro package delivery is priority, within 6-24 hours.</p>
-                </div>
-                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
-                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq3_q">How do package payments work?</h3>
-                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq3_a">You choose a plan (Standard or Pro), buy a package of thumbnails (e.g. 4, 8, 10 or Unlimited) via Stripe, and we contact you via Telegram or Email within 2 hours to start.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact-section" class="relative z-10 max-w-5xl mx-auto px-4 md:px-6 py-10 md:py-32 pointer-events-none">
         <div class="pointer-events-auto">
@@ -747,6 +690,31 @@
                 <h2 class="font-brand text-3xl md:text-6xl font-black italic tracking-wider uppercase mb-2 md:mb-6" data-t="contact">Contact</h2>
                 <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
             </div>
+
+            <!-- Start Requirements Banner -->
+            <div class="bg-white/[0.02] border border-white/10 rounded-[2rem] p-6 md:p-8 mb-10 max-w-3xl mx-auto text-center reveal-init delay-100">
+                <p class="text-white/70 text-xs md:text-sm mb-4 leading-relaxed font-semibold uppercase tracking-wider" data-t="get_started_desc">To get started, please provide the following details when contacting me:</p>
+                <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                    <span class="inline-flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full border border-white/5 text-xs text-white/95 font-bold uppercase tracking-wider">
+                        <i data-lucide="link-2" class="w-3.5 h-3.5 text-white/50"></i>
+                        <span data-t="channel_link">Channel link</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full border border-white/5 text-xs text-white/95 font-bold uppercase tracking-wider">
+                        <i data-lucide="file-text" class="w-3.5 h-3.5 text-white/50"></i>
+                        <span data-t="brief_ideas">Brief & Ideas</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full border border-white/5 text-xs text-white/95 font-bold uppercase tracking-wider">
+                        <i data-lucide="image" class="w-3.5 h-3.5 text-white/50"></i>
+                        <span data-t="assets_refs">Assets & Refs</span>
+                    </span>
+                    <span class="inline-flex items-center gap-2 bg-white/5 px-4 py-2.5 rounded-full border border-white/5 text-xs text-white/95 font-bold uppercase tracking-wider">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5 text-white/50"></i>
+                        <span data-t="deadline">Deadline</span>
+                    </span>
+                </div>
+                <p class="text-[9px] text-white/35 uppercase font-black tracking-widest italic mt-4" data-t="more_details">The more details you share, the better the result.</p>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
                 <div onclick="gtag_report_conversion(); window.open('https://t.me/dezzzy4', '_blank')" class="group interactive-card flex items-center justify-between bg-white/[0.03] border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 cursor-pointer reveal-init delay-100">
                     <div class="flex items-center gap-4 md:gap-5 overflow-hidden">
@@ -809,6 +777,51 @@
                     </div>
                     <div class="w-10 h-10 md:w-14 md:h-14 bg-black/5 rounded-full flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"><i data-lucide="arrow-up-right" class="w-6 h-6 md:w-8 md:h-8"></i></div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section" class="relative z-10 max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-20 pointer-events-none">
+        <div class="pointer-events-auto">
+            <div class="text-center mb-8 md:mb-12 reveal-init">
+                <h2 class="font-brand text-3xl md:text-5xl font-black italic tracking-wider uppercase mb-2 md:mb-4" data-t="faq">FAQ</h2>
+                <div class="h-1 w-12 md:w-20 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            </div>
+            <div class="space-y-4 reveal-init delay-200">
+                <details class="group bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-6 [&_summary::-webkit-details-marker]:hidden transition-all duration-300 open:bg-white/[0.04] open:border-white/20">
+                    <summary class="flex justify-between items-center font-brand text-base md:text-xl font-black uppercase italic tracking-wider text-white cursor-pointer select-none">
+                        <span data-t="faq1_q">Standard vs Pro: what is the difference?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 flex-shrink-0 ml-4">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50 group-hover:text-white"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-xs md:text-sm text-white/70 leading-relaxed border-t border-white/5 pt-4" data-t="faq1_a">
+                        Pro tier offers 2 concepts for A/B testing, priority delivery (6-24h), priority 24/7 support, more revisions (6 instead of 3), and higher production quality.
+                    </div>
+                </details>
+                <details class="group bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-6 [&_summary::-webkit-details-marker]:hidden transition-all duration-300 open:bg-white/[0.04] open:border-white/20">
+                    <summary class="flex justify-between items-center font-brand text-base md:text-xl font-black uppercase italic tracking-wider text-white cursor-pointer select-none">
+                        <span data-t="faq2_q">Delivery time?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 flex-shrink-0 ml-4">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50 group-hover:text-white"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-xs md:text-sm text-white/70 leading-relaxed border-t border-white/5 pt-4" data-t="faq2_a">
+                        Standard package delivery takes 24-72 hours. Pro package delivery is priority, within 6-24 hours.
+                    </div>
+                </details>
+                <details class="group bg-white/[0.02] border border-white/10 rounded-[1.5rem] p-6 [&_summary::-webkit-details-marker]:hidden transition-all duration-300 open:bg-white/[0.04] open:border-white/20">
+                    <summary class="flex justify-between items-center font-brand text-base md:text-xl font-black uppercase italic tracking-wider text-white cursor-pointer select-none">
+                        <span data-t="faq3_q">How do package payments work?</span>
+                        <span class="transition-transform duration-300 group-open:rotate-180 flex-shrink-0 ml-4">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-white/50 group-hover:text-white"></i>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-xs md:text-sm text-white/70 leading-relaxed border-t border-white/5 pt-4" data-t="faq3_a">
+                        You choose a plan (Standard or Pro), buy a package of thumbnails (e.g. 4, 8, 10 or Unlimited) via Stripe, and we contact you via Telegram or Email within 2 hours to start.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
