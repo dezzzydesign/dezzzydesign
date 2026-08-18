@@ -1112,7 +1112,10 @@
                     handle.style.left = percent + '%';
                     ticking = false;
                 });
-              slider.addEventListener('mousemove', handleMove);
+                ticking = true;
+            }
+        }
+        slider.addEventListener('mousemove', handleMove);
         slider.addEventListener('touchmove', handleMove, {passive: true});
 
         const translations = {
