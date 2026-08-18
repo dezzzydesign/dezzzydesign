@@ -371,13 +371,31 @@
             }
         }
 
+        .standard-package-row, .pro-package-row {
+            border: 1px solid transparent !important;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .standard-package-row:hover {
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            background-color: rgba(255, 255, 255, 0.02) !important;
+        }
+        .pro-package-row:hover {
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            background-color: rgba(255, 255, 255, 0.04) !important;
+        }
         .standard-package-row.active {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2) !important;
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
         }
         .pro-package-row.active {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.4) !important;
+            background-color: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(255, 255, 255, 0.65) !important;
+            box-shadow: 0 4px 25px rgba(255, 255, 255, 0.05) !important;
+        }
+        .standard-package-row.active span, .pro-package-row.active span {
+            color: #ffffff !important;
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -1279,14 +1297,12 @@
             // Remove active class from all standard package rows
             document.querySelectorAll('.standard-package-row').forEach(row => {
                 row.classList.remove('active');
-                row.style.borderColor = 'transparent';
             });
             
-            // Add active class and border to selected row
+            // Add active class to selected row
             const activeRow = document.getElementById(`standard-row-${qtyId}`);
             if (activeRow) {
                 activeRow.classList.add('active');
-                activeRow.style.borderColor = 'rgba(255, 255, 255, 0.2)';
             }
             
             // Update the Stripe Checkout button link
@@ -1300,14 +1316,12 @@
             // Remove active class from all pro package rows
             document.querySelectorAll('.pro-package-row').forEach(row => {
                 row.classList.remove('active');
-                row.style.borderColor = 'transparent';
             });
             
-            // Add active class and border to selected row
+            // Add active class to selected row
             const activeRow = document.getElementById(`pro-row-${qtyId}`);
             if (activeRow) {
                 activeRow.classList.add('active');
-                activeRow.style.borderColor = 'rgba(255, 255, 255, 0.4)';
             }
             
             // Update the Stripe Checkout button link
