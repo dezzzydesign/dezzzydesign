@@ -403,7 +403,7 @@
                     </div>
                 </div>
 
-                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="bg-white text-black px-4 py-2 md:px-8 md:py-3 rounded-full font-black hover:scale-105 transition-all text-[9px] md:text-sm uppercase tracking-widest flex items-center gap-2">
+                <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="bg-white text-black px-4 py-2 md:px-8 md:py-3 rounded-full font-black hover:scale-105 transition-all text-[9px] md:text-sm uppercase tracking-widest flex items-center gap-2">
                     <i data-lucide="shopping-cart" class="w-3 h-3 md:w-5 md:h-5"></i> <span data-t="order_now">ORDER NOW</span>
                 </button>
 
@@ -457,7 +457,7 @@
                 <img src="assets/logo.png" alt="Logo" width="542" height="208" class="h-24 md:h-64 w-auto object-contain relative z-10" fetchpriority="high">
             </div>
             <div class="flex flex-col gap-6 md:gap-10 w-full max-w-[280px] md:max-w-sm items-center mb-10 md:mb-16 reveal-init delay-200">
-                <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-white text-black py-4 md:py-5 rounded-2xl font-black text-lg md:text-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3 md:gap-4 shadow-[0_20px_80px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
+                <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-white text-black py-4 md:py-5 rounded-2xl font-black text-lg md:text-2xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3 md:gap-4 shadow-[0_20px_80px_rgba(255,255,255,0.15)] uppercase tracking-tighter">
                     <i data-lucide="shopping-cart" class="w-5 h-5 md:w-7 md:h-7"></i> <span data-t="order_now">ORDER NOW</span>
                 </button>
                 <div class="flex items-center justify-center gap-5 md:gap-8 px-4 reveal-init delay-400">
@@ -532,62 +532,141 @@
                 <div class="h-1 w-12 md:w-24 bg-white mx-auto mt-2 md:mt-8 shadow-[0_0_20px_rgba(255,255,255,0.3)]"></div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
-                <!-- Column 1: Start -->
-                <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col min-h-[500px] reveal-init delay-300">
-                    <div class="flex items-center gap-4 mb-10">
-                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center"><i data-lucide="info" class="w-6 h-6 text-white"></i></div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="start">Start</h3>
-                    </div>
-                    <div class="space-y-6 text-white/50 text-sm md:text-base leading-relaxed">
-                        <p data-t="get_started_desc">To get started, please provide the following details when contacting me:</p>
-                        <div class="h-px bg-white/5 w-full"></div>
-                        <ul class="space-y-5">
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="link-2" class="w-4 h-4 text-white/30"></i> <span data-t="channel_link">Channel link</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="file-text" class="w-4 h-4 text-white/30"></i> <span data-t="brief_ideas">Brief & Ideas</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="image" class="w-4 h-4 text-white/30"></i> <span data-t="assets_refs">Assets & Refs</span></li>
-                            <li class="flex items-center gap-4 text-white/80 font-bold uppercase text-[11px] tracking-[0.2em]"><i data-lucide="calendar" class="w-4 h-4 text-white/30"></i> <span data-t="deadline">Deadline</span></li>
+            <!-- Two plans grid (Standard and Pro) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto mb-12">
+                <!-- Column 1: Standard Plan -->
+                <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 flex flex-col justify-between hover:border-white/20 transition-all duration-300 reveal-init delay-100">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider text-white" data-t="standard_plan">Standard</h3>
+                            <span class="text-[10px] font-bold uppercase tracking-wider py-1 px-2 border border-white/10 rounded text-white/50" data-t="standard_quality">Standard Quality</span>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/10 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/70 font-medium">1 Thumbnail</span>
+                                <span class="font-brand text-xl font-black italic text-white">$75</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/10 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/70 font-medium">4 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$270</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/10 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/70 font-medium">8 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$500</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/10 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/70 font-medium">10 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$620</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white font-black uppercase tracking-wider" data-t="unlimited_month">Unlimited / Month</span>
+                                <span class="font-brand text-xl font-black italic text-white">$950</span>
+                            </li>
                         </ul>
+
+                        <div class="bg-white/[0.01] border-l border-white/20 pl-4 py-1 mb-8">
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-white/50 mb-2" data-t="whats_included">What's included</h4>
+                            <ul class="space-y-1">
+                                <li class="text-xs text-white/75 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i> <span data-t="concept_per_piece">1 concept per thumbnail</span></li>
+                                <li class="text-xs text-white/75 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i> <span data-t="revisions_3">3 revisions per thumbnail</span></li>
+                                <li class="text-xs text-white/75 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i> <span data-t="delivery_standard">Delivery within 24-72 hours</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="mt-auto pt-8"><p class="text-[10px] text-white/20 uppercase font-black tracking-widest italic leading-relaxed" data-t="more_details">The more details you share, the better the result.</p></div>
+                    <div>
+                        <!-- Primary Stripe checkout -->
+                        <a href="https://buy.stripe.com/cNi8wI6ES1noe1A8P74ZG01" target="_blank" class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 mt-auto"><span data-t="pay_1click">Order in 1-Click</span> <i data-lucide="arrow-right" class="w-4 h-4 text-white/40"></i></a>
+                        <!-- Secondary Invoice contact -->
+                        <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-center text-white/40 hover:text-white/80 text-[10px] uppercase font-bold tracking-widest pt-4 transition-all focus:outline-none">
+                            <span data-t="need_invoice">Need invoice payment? Contact me</span>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Column 2: Pricing -->
-                <div class="bg-white text-black rounded-[2.5rem] p-8 md:p-10 flex flex-col transform lg:scale-105 shadow-2xl reveal-init delay-100">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-black/5 rounded-2xl flex items-center justify-center"><i data-lucide="banknote" class="w-6 h-6 text-black"></i></div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="pricing">Pricing</h3>
-                    </div>
-                    <div class="mb-8">
-                        <div class="text-[10px] uppercase font-black tracking-widest mb-1 opacity-40 italic" data-t="from">From</div>
-                        <div class="text-7xl font-brand font-black italic leading-none">$40</div>
-                        <div class="text-[10px] uppercase font-black tracking-widest mt-2 opacity-40" data-t="per_thumb">Per Thumbnail</div>
-                    </div>
-                    <div class="space-y-4 mb-10 text-black/60 text-sm font-bold uppercase tracking-tight">
-                        <p data-t="final_price">• Final price after brief</p>
-                        <p data-t="revisions">• 3 Free Revisions</p>
-                    </div>
-                    <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-black text-white py-5 rounded-2xl font-black text-lg hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-3 uppercase tracking-tighter mt-auto"><span data-t="order_now">Order Now</span> <i data-lucide="arrow-right" class="w-5 h-5"></i></button>
-                </div>
+                <!-- Column 2: Pro Plan (Featured) -->
+                <div class="bg-white/[0.04] border-2 border-white/30 rounded-[2.5rem] p-8 flex flex-col justify-between shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:border-white/55 transition-all duration-300 relative overflow-hidden reveal-init delay-200">
+                    <div>
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider text-white" data-t="pro_plan">Pro</h3>
+                            <span class="text-[10px] font-black uppercase tracking-wider py-1 px-2.5 bg-white text-black rounded font-sans" data-t="recommended">Recommended</span>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/15 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/95 font-medium">
+                                    1 Thumbnail
+                                    <small class="block text-[10px] text-white/50 font-normal tracking-wide normal-case mt-0.5" data-t="pro_concept_desc">2 concepts for 1 video</small>
+                                </span>
+                                <span class="font-brand text-xl font-black italic text-white">$120</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/15 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/95 font-medium">4 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$420</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/15 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/95 font-medium">8 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$740</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 border-b border-dashed border-white/15 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white/95 font-medium">10 Thumbnails</span>
+                                <span class="font-brand text-xl font-black italic text-white">$900</span>
+                            </li>
+                            <li class="flex justify-between items-baseline py-2.5 hover:pl-1 transition-all duration-200">
+                                <span class="text-sm text-white font-black uppercase tracking-wider" data-t="unlimited_month">Unlimited / Month</span>
+                                <span class="font-brand text-xl font-black italic text-white">$1,250</span>
+                            </li>
+                        </ul>
 
-                <!-- Column 3: FAQ -->
-                <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col reveal-init delay-300">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center"><i data-lucide="help-circle" class="w-6 h-6 text-white"></i></div>
-                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider" data-t="faq">FAQ</h3>
+                        <div class="bg-white/[0.02] border-l-2 border-white pl-4 py-1 mb-8">
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-2" data-t="whats_included">What's included</h4>
+                            <ul class="space-y-1">
+                                <li class="text-xs text-white/95 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/75"></i> <span data-t="concepts_per_piece">2 concepts (Perfect for A/B testing)</span></li>
+                                <li class="text-xs text-white/95 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/75"></i> <span data-t="revisions_6">6 revisions per thumbnail</span></li>
+                                <li class="text-xs text-white/95 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/75"></i> <span data-t="delivery_pro">Delivery within 6-24 hours</span></li>
+                                <li class="text-xs text-white/95 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/75"></i> <span data-t="priority_support">24-hour priority support</span></li>
+                                <li class="text-xs text-white/95 flex items-center gap-1.5"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/75"></i> <span data-t="higher_quality">Higher production quality</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="space-y-6">
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq2_q">Delivery time?</p>
-                            <p class="text-xs md:text-sm text-white/70 leading-relaxed" data-t="faq2_a">Discussed per project, usually 24-48h.</p>
+                    <div>
+                        <!-- Primary Stripe checkout -->
+                        <a href="https://buy.stripe.com/cNi8wI6ES1noe1A8P74ZG01" target="_blank" class="w-full bg-white hover:bg-neutral-100 text-black py-4 rounded-xl font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 mt-auto shadow-[0_10px_30px_rgba(255,255,255,0.15)]"><span data-t="pay_1click">Order in 1-Click</span> <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                        <!-- Secondary Invoice contact -->
+                        <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-center text-white/40 hover:text-white/80 text-[10px] uppercase font-bold tracking-widest pt-4 transition-all focus:outline-none">
+                            <span data-t="need_invoice">Need invoice payment? Contact me</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Info banner (horizontal, full-width) -->
+            <div class="bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-8 md:p-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mt-12 max-w-5xl mx-auto reveal-init delay-300">
+                <div class="flex items-center gap-4 lg:flex-col lg:items-start flex-shrink-0">
+                    <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center"><i data-lucide="info" class="w-6 h-6 text-white"></i></div>
+                    <div>
+                        <h3 class="font-brand text-2xl font-black uppercase italic tracking-wider text-white" data-t="start">Start</h3>
+                        <p class="text-[9px] text-white/35 uppercase font-black tracking-widest italic mt-1" data-t="more_details">The more details you share, the better.</p>
+                    </div>
+                </div>
+                <div class="flex-1 w-full">
+                    <p class="text-white/70 text-xs md:text-sm mb-6 leading-relaxed" data-t="get_started_desc">To get started, please provide the following details when contacting me:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
+                            <i data-lucide="link-2" class="w-4 h-4 text-white/50"></i>
+                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="channel_link">Channel link</span>
                         </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq3_q">Budget?</p>
-                            <p class="text-xs md:text-sm text-white/70 leading-relaxed" data-t="faq3_a">Always open to discussion.</p>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
+                            <i data-lucide="file-text" class="w-4 h-4 text-white/50"></i>
+                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="brief_ideas">Brief & Ideas</span>
                         </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <p class="text-[10px] font-black uppercase tracking-widest text-white/40 mb-2" data-t="faq1_q">Why a strong thumbnail matters?</p>
-                            <p class="text-xs md:text-sm text-white/70 leading-relaxed" data-t="faq1_a">A thumbnail is the first thing people see before deciding whether to watch your video. A strong thumbnail helps your content stand out, grab attention, and increase clicks.</p>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
+                            <i data-lucide="image" class="w-4 h-4 text-white/50"></i>
+                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="assets_refs">Assets & Refs</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/15 transition-all duration-300">
+                            <i data-lucide="calendar" class="w-4 h-4 text-white/50"></i>
+                            <span class="text-xs text-white/90 font-bold uppercase tracking-wider" data-t="deadline">Deadline</span>
                         </div>
                     </div>
                 </div>
@@ -630,8 +709,32 @@
                             <div class="absolute inset-0 bg-white/5 blur-3xl rounded-full group-hover:bg-white/10 transition-colors duration-500"></div>
                             <img src="assets/logo.png" alt="Dezzzy" class="relative z-10 w-40 h-40 md:w-64 md:h-64 object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]">
                         </div>
-                        <button onclick="document.getElementById('contact-section').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-sm md:text-xl shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95 transition-all"><span data-t="order_now">ORDER NOW</span></button>
+                        <button onclick="document.getElementById('pricing-section').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-2xl font-black uppercase text-sm md:text-xl shadow-[0_0_50px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95 transition-all"><span data-t="order_now">ORDER NOW</span></button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section" class="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-24 pointer-events-none">
+        <div class="pointer-events-auto">
+            <div class="text-center mb-8 md:mb-16 reveal-init">
+                <h2 class="font-brand text-3xl md:text-6xl font-black italic tracking-wider uppercase mb-2 md:mb-6" data-t="faq">FAQ</h2>
+                <div class="h-1 w-12 md:w-24 bg-white mx-auto shadow-[0_0_20px_rgba(255,255,255,0.5)]"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-init delay-200">
+                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
+                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq1_q">Standard vs Pro: what is the difference?</h3>
+                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq1_a">Pro tier offers 2 concepts for A/B testing, priority delivery (6-24h), priority 24/7 support, more revisions (6 instead of 3), and higher production quality.</p>
+                </div>
+                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
+                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq2_q">Delivery time?</h3>
+                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq2_a">Standard package delivery takes 24-72 hours. Pro package delivery is priority, within 6-24 hours.</p>
+                </div>
+                <div class="p-6 bg-white/[0.02] border border-white/10 rounded-[2rem] hover:border-white/20 transition-all duration-300">
+                    <h3 class="text-white font-brand text-lg uppercase italic tracking-wider mb-3" data-t="faq3_q">How do package payments work?</h3>
+                    <p class="text-xs text-white/70 leading-relaxed" data-t="faq3_a">You choose a plan (Standard or Pro), buy a package of thumbnails (e.g. 4, 8, 10 or Unlimited) via Stripe, and we contact you via Telegram or Email within 2 hours to start.</p>
                 </div>
             </div>
         </div>
@@ -699,10 +802,10 @@
 
             <!-- Form Button (Moved back here) -->
             <div class="flex justify-center mt-12 reveal-init delay-500">
-                <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" onclick="gtag_report_conversion()" class="group relative overflow-hidden bg-white text-black rounded-[2rem] p-6 md:p-8 transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] w-full sm:w-auto sm:min-w-[400px]">
+                <a href="https://buy.stripe.com/cNi8wI6ES1noe1A8P74ZG01" target="_blank" onclick="gtag_report_conversion()" class="group relative overflow-hidden bg-white text-black rounded-[2rem] p-6 md:p-8 transition-all duration-200 hover:scale-[1.05] active:scale-[0.95] flex items-center justify-between gap-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] w-full sm:w-auto sm:min-w-[400px]">
                     <div class="text-left">
-                        <h3 class="font-brand text-2xl md:text-3xl font-black italic uppercase leading-none mb-1" data-t="fill_form">Fill the form</h3>
-                        <p class="text-black/40 font-black uppercase tracking-widest text-[10px] md:text-xs" data-t="start_now">Start your project now</p>
+                        <h3 class="font-brand text-2xl md:text-3xl font-black italic uppercase leading-none mb-1" data-t="pay_1click">Order in 1-Click</h3>
+                        <p class="text-black/40 font-black uppercase tracking-widest text-[10px] md:text-xs" data-t="stripe_secure">Pay securely via Stripe</p>
                     </div>
                     <div class="w-10 h-10 md:w-14 md:h-14 bg-black/5 rounded-full flex items-center justify-center group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"><i data-lucide="arrow-up-right" class="w-6 h-6 md:w-8 md:h-8"></i></div>
                 </a>
@@ -1031,11 +1134,11 @@
         slider.addEventListener('touchmove', handleMove, {passive: true});
 
         const translations = {
-            en: { portfolio: "Portfolio", price_info: "Price & Info", about_me: "About Me", before_after: "Before / After", contact: "Contact", order_now: "ORDER NOW", start: "Start", pricing: "Pricing", faq: "FAQ", from: "From", per_thumb: "Per Thumbnail", final_price: "Final price after brief", revisions: "3 Free Revisions", start_project: "Start project", get_started_desc: "To get started, please provide the following details when contacting me:", channel_link: "Channel link", brief_ideas: "Brief & Ideas", assets_refs: "Assets & Refs", deadline: "Deadline", more_details: "The more details you share, the better the result.", faq1_q: "Why a strong thumbnail matters?", faq1_a: "A thumbnail is the first thing people see before deciding whether to watch your video. A strong thumbnail helps your content stand out, grab attention, and increase clicks.", faq2_q: "Delivery time?", faq2_a: "Discussed per project, usually 24-48h.", faq3_q: "Budget?", faq3_a: "Always open to discussion.", about_desc: "I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.", years_exp: "Years<br>Exp.", projects_done: "Projects<br>Done", total_views: "Total<br>Views", fill_form: "Fill the form", start_now: "Start your project now" },
-            ru: { portfolio: "Портфолио", price_info: "Цены и Инфо", about_me: "Обо мне", before_after: "До / После", contact: "Контакты", order_now: "ЗАКАЗАТЬ", start: "Начало", pricing: "Цены", faq: "FAQ", from: "От", per_thumb: "За превью", final_price: "Финальная цена после брифа", revisions: "3 правки бесплатно", start_project: "Начать проект", get_started_desc: "Для начала работы подготовьте следующее:", channel_link: "Ссылка на канал", brief_ideas: "Бриф и идеи", assets_refs: "Исходники и рефы", deadline: "Дедлайн", more_details: "Чем больше деталей, тем лучше результат.", faq1_q: "Почему важно крутое превью?", faq1_a: "Превью — это первое, что видит зритель. Оно помогает выделиться и повышает CTR вашего видео.", faq2_q: "Сроки выполнения?", faq2_a: "Обсуждаются индивидуально, обычно 24-48ч.", faq3_q: "Бюджет?", faq3_a: "Всегда готов к обсуждению.", about_desc: "Создаю превью для YouTube более 5 лет. Помогаю захватить внимание зрителя через продуманный дизайн.", years_exp: "Лет<br>опыта", projects_done: "Проектов<br>сделано", total_views: "Всего<br>просмотров", fill_form: "Заполнить форму", start_now: "Начните свой проект сейчас" },
-            ua: { portfolio: "Портфоліо", price_info: "Ціни та Інфо", about_me: "Про мене", before_after: "До / Після", contact: "Контакти", order_now: "ЗАМОВИТИ", start: "Початок", pricing: "Ціни", faq: "FAQ", from: "Від", per_thumb: "За прев'ю", final_price: "Фінальна ціна після брифу", revisions: "3 правки безкоштовно", start_project: "Почати проект", get_started_desc: "Для початку роботи підготуйте наступне:", channel_link: "Посилання на канал", brief_ideas: "Бриф та ідеї", assets_refs: "Вихідні дані та рефи", deadline: "Дедлайн", more_details: "Чим більше деталей, тим кращий результат.", faq1_q: "Чому важливо круте прев'ю?", faq1_a: "Прев'ю — це перше, що бачить глядач. Воно допомагає виділитися та підвищує CTR вашого відео.", faq2_q: "Терміни виконання?", faq2_a: "Обговорюються індивідуально, зазвичай 24-48г.", faq3_q: "Бюджет?", faq3_a: "Завжди відкритий до обговорення.", about_desc: "Створюю прев'ю для YouTube більше 5 років. Допомагаю захопити увагу глядача через продуманий дизайн.", years_exp: "Років<br>досвіду", projects_done: "Проектів<br>виконано", total_views: "Всього<br>переглядів", fill_form: "Заповнити форму", start_now: "Почніть свій проект зараз" },
-            es: { portfolio: "Portafolio", price_info: "Precios e Info", about_me: "Sobre mí", before_after: "Antes / После", contact: "Contacto", order_now: "PEDIR AHORA", start: "Inicio", pricing: "Precios", faq: "FAQ", from: "Desde", per_thumb: "Por miniatura", final_price: "Precio final tras el brief", revisions: "3 revisiones gratis", start_project: "Iniciar проект", get_started_desc: "Para empezar, por favor proporcione:", channel_link: "Link del canal", brief_ideas: "Brief e ideas", assets_refs: "Recursos y refs", deadline: "Plazo", more_details: "Cuantos más detalles, лучше.", faq1_q: "¿Por qué es importante una buena miniatura?", faq1_a: "La miniatura es lo сначала que ve la gente. Ayuda a destacar и aumenta los clics.", faq2_q: "¿Tiempo de entrega?", faq2_a: "Se discute por проект, usualmente 24-48h.", faq3_q: "¿Presupuesto?", faq3_a: "Siempre abierto a discusión.", about_desc: "He creado miniaturas para YouTube por más de 5 años. Ayudo a captar la atención mediante el diseño.", years_exp: "Años<br>Exp.", projects_done: "Proyectos<br>Hechos", total_views: "Vistas<br>Totales", fill_form: "Llenar formulario", start_now: "Empieza tu проект ahora" },
-            de: { portfolio: "Portfolio", price_info: "Preise & Info", about_me: "Über mich", before_after: "Vorher / Nachher", contact: "Kontakt", order_now: "JETZT BESTELLEN", start: "Start", pricing: "Preise", faq: "FAQ", from: "Ab", per_thumb: "Pro Thumbnail", final_price: "Endpreis nach Briefing", revisions: "3 kostenlose Revisionen", start_project: "Projekt starten", get_started_desc: "Bereiten Sie dies vor:", channel_link: "Kanal-Link", brief_ideas: "Briefing & Ideen", assets_refs: "Assets & Referenzen", deadline: "Deadline", more_details: "Je mehr Details, desto лучше.", faq1_q: "Warum ist ein gutes Thumbnail wichtig?", faq1_a: "Das Thumbnail ist das Erste, was Leute sehen. Es hilft наzufallen и Klicks zu generieren.", faq2_q: "Lieferzeit?", faq2_a: "Abhängig vom Projekt, meist 24-48 Std.", faq3_q: "Budget?", faq3_a: "Immer offen für Diskussionen.", about_desc: "Ich erstelle seit über 5 Jahren YouTube-Thumbnails. Ich helфе, Aufmerksamkeit durch Design zu gewinnen.", years_exp: "Jahre<br>Erf.", projects_done: "Projekte<br>Fertig", total_views: "Gesamt<br>ansichten", fill_form: "Formular ausfüllen", start_now: "Starten Sie сейчас Ihr проект" }
+            en: { portfolio: "Portfolio", price_info: "Price & Info", about_me: "About Me", before_after: "Before / After", contact: "Contact", order_now: "ORDER NOW", start: "Start", pricing: "Pricing", faq: "FAQ", from: "From", per_thumb: "Per Thumbnail", final_price: "Final price after brief", revisions: "3 Free Revisions", start_project: "Start project", get_started_desc: "To get started, please provide the following details when contacting me:", channel_link: "Channel link", brief_ideas: "Brief & Ideas", assets_refs: "Assets & Refs", deadline: "Deadline", more_details: "The more details you share, the better the result.", faq1_q: "Standard vs Pro: what is the difference?", faq1_a: "Pro tier offers 2 concepts for A/B testing, priority delivery (6-24h), priority 24/7 support, more revisions (6 instead of 3), and higher production quality.", faq2_q: "Delivery time?", faq2_a: "Standard package delivery takes 24-72 hours. Pro package delivery is priority, within 6-24 hours.", faq3_q: "How do package payments work?", faq3_a: "You choose a plan (Standard or Pro), buy a package of thumbnails (e.g. 4, 8, 10 or Unlimited) via Stripe, and we contact you via Telegram or Email within 2 hours to start.", about_desc: "I’ve been creating YouTube thumbnails for over 5 years. I help capture viewers’ attention through thoughtful design.", years_exp: "Years<br>Exp.", projects_done: "Projects<br>Done", total_views: "Total<br>Views", pay_1click: "Order in 1-Click", stripe_secure: "Pay securely via Stripe", success_title: "Payment Successful!", success_desc: "Thank you for your order! We have received your payment and will contact you via Telegram or Email within 2 hours to start working on your project.", success_close: "Close", standard_plan: "Standard", pro_plan: "Pro", standard_quality: "Standard Quality", recommended: "Recommended", unlimited_month: "Unlimited / Month", whats_included: "What's included", concept_per_piece: "1 concept per thumbnail", concepts_per_piece: "2 concepts (Perfect for A/B testing)", revisions_3: "3 revisions per thumbnail", revisions_6: "6 revisions per thumbnail", delivery_standard: "Delivery within 24-72 hours", delivery_pro: "Delivery within 6-24 hours", priority_support: "24-hour priority support", higher_quality: "Higher production quality", order_standard: "Order Standard", order_pro: "Order Pro", need_invoice: "Need invoice payment? Contact me", pro_concept_desc: "2 concepts for 1 video" },
+            ru: { portfolio: "Портфолио", price_info: "Цены и Инфо", about_me: "Обо мне", before_after: "До / После", contact: "Контакты", order_now: "ЗАКАЗАТЬ", start: "Начало", pricing: "Цены", faq: "FAQ", from: "От", per_thumb: "За превью", final_price: "Финальная цена после брифа", revisions: "3 правки бесплатно", start_project: "Начать проект", get_started_desc: "Для начала работы подготовьте следующее:", channel_link: "Ссылка на канал", brief_ideas: "Бриф и идеи", assets_refs: "Исходники и рефы", deadline: "Дедлайн", more_details: "Чем больше деталей, тем лучше результат.", faq1_q: "В чем разница между Standard и Pro?", faq1_a: "В тарифе Pro вы получаете 2 варианта концепта для A/B тестов, приоритетную сдачу (6-24ч), приоритетную поддержку 24/7, больше правок (6 вместо 3) и максимальное качество отрисовки.", faq2_q: "Сроки выполнения?", faq2_a: "Сдача Standard-пакета занимает от 24 до 72 часов. Сдача Pro-пакета приоритетная — от 6 до 24 часов.", faq3_q: "Как работают пакетные заказы?", faq3_a: "Вы выбираете тариф (Standard или Pro), оплачиваете пакет превью (4, 8, 10 или Безлимит) через Stripe, и мы связываемся с вами в Telegram или по почте в течение 2 часов для старта.", about_desc: "Создаю превью для YouTube более 5 лет. Помогаю захватить внимание зрителя через продвиманный дизайн.", years_exp: "Лет<br>опыта", projects_done: "Проектов<br>сделано", total_views: "Всего<br>просмотров", pay_1click: "Заказать в 1 клик", stripe_secure: "Безопасная оплата через Stripe", success_title: "Оплата успешна!", success_desc: "Спасибо за заказ! Мы получили вашу оплату и свяжемся с вами в Telegram или по почте в течение 2 часов, чтобы начать работу над вашим проектом.", success_close: "Закрыть", standard_plan: "Стандарт", pro_plan: "Про", standard_quality: "Стандартное качество", recommended: "Рекомендуем", unlimited_month: "Безлимит / Месяц", whats_included: "Что включено", concept_per_piece: "1 вариант концепта на превью", concepts_per_piece: "2 варианта концепта (для A/B тестов)", revisions_3: "3 правки на превью", revisions_6: "6 правок на превью", delivery_standard: "Сдача в течение 24–72 часов", delivery_pro: "Сдача в течение 6–24 часов", priority_support: "24/7 приоритетная поддержка", higher_quality: "Максимальное качество отрисовки", order_standard: "Заказать Стандарт", order_pro: "Заказать Про", need_invoice: "Нужна оплата по счету? Свяжитесь со мной", pro_concept_desc: "2 концепта для 1 видео" },
+            ua: { portfolio: "Портфоліо", price_info: "Ціни та Інфо", about_me: "Про мене", before_after: "До / Після", contact: "Контакти", order_now: "ЗАМОВИТИ", start: "Початок", pricing: "Ціни", faq: "FAQ", from: "Від", per_thumb: "За прев'ю", final_price: "Фінальна ціна після брифу", revisions: "3 правки безкоштовно", start_project: "Почати проект", get_started_desc: "Для початку роботи підготуйте наступне:", channel_link: "Посилання на канал", brief_ideas: "Бриф та ідеї", assets_refs: "Вихідні дані та рефи", deadline: "Дедлайн", more_details: "Чим більше деталей, тем кращий результат.", faq1_q: "У чому різниця між Standard та Pro?", faq1_a: "У тарифі Pro ви отримуєте 2 варіанти концепту для A/B тестів, пріоритетну сдачу (6-24г), пріоритетну підтримку 24/7, більше правок (6 замість 3) та максимальну якість малювання.", faq2_q: "Терміни виконання?", faq2_a: "Здача Standard-пакета займає від 24 до 72 годин. Здача Pro-пакета пріоритетна — від 6 до 24 годин.", faq3_q: "Як працюють пакетні замовлення?", faq3_a: "Ви обираєте тариф (Standard або Pro), оплачуєте пакет прев'ю (4, 8, 10 або Безліміт) через Stripe, і ми зв'язуємося з вами в Telegram або поштою протягом 2 годин для старту.", about_desc: "Створюю прев'ю для YouTube більше 5 років. Допомагаю захопити увагу глядача через продуманий дизайн.", years_exp: "Років<br>досвіду", projects_done: "Проектів<br>виконано", total_views: "Всього<br>переглядів", pay_1click: "Замовити в 1 клік", stripe_secure: "Безпечна оплата через Stripe", success_title: "Оплата успішна!", success_desc: "Дякуємо за замовлення! Ми отримали вашу оплату та зв'яжемося з вами в Telegram або поштою протягом 2 годин, щоб розпочати роботу над вашим проектом.", success_close: "Закріти", standard_plan: "Стандарт", pro_plan: "Про", standard_quality: "Стандартна якість", recommended: "Рекомендуємо", unlimited_month: "Безліміт / Місяць", whats_included: "Що включено", concept_per_piece: "1 вариант концепту на прев'ю", concepts_per_piece: "2 варіанти концепту (для A/B тестів)", revisions_3: "3 правки на прев'ю", revisions_6: "6 правок на прев'ю", delivery_standard: "Здача протягом 24–72 годин", delivery_pro: "Здача протягом 6–24 годин", priority_support: "24/7 пріоритетна підтримка", higher_quality: "Максимальна якість малювання", order_standard: "Замовити Стандарт", order_pro: "Замовити Про", need_invoice: "Потрібна оплата за рахунком? Зв'яжіться зі мною", pro_concept_desc: "2 концепти для 1 відео" },
+            es: { portfolio: "Portafolio", price_info: "Precios e Info", about_me: "Sobre mí", before_after: "Antes / Después", contact: "Contacto", order_now: "PEDIR AHORA", start: "Inicio", pricing: "Precios", faq: "FAQ", from: "Desde", per_thumb: "Por miniatura", final_price: "Precio final tras el brief", revisions: "3 revisiones gratis", start_project: "Iniciar proyecto", get_started_desc: "Para empezar, por favor proporcione:", channel_link: "Link del canal", brief_ideas: "Brief e ideas", assets_refs: "Recursos y refs", deadline: "Plazo", more_details: "Cuantos más detalles, mejor.", faq1_q: "¿Diferencia entre Standard y Pro?", faq1_a: "El plan Pro ofrece 2 conceptos para pruebas A/B, entrega prioritaria (6-24h), soporte 24/7, más revisiones (6 en vez de 3) y mayor calidad de producción.", faq2_q: "¿Plazo de entrega?", faq2_a: "La entrega de Standard es de 24-72 horas. La entrega de Pro es prioritaria, de 6-24 horas.", faq3_q: "¿Cómo funcionan los pagos de paquetes?", faq3_a: "Elige su plan (Standard o Pro), compra un paquete de miniaturas (4, 8, 10 o Ilimitado) mediante Stripe, y nos contactamos con usted en 2 horas para empezar.", about_desc: "He creado miniaturas para YouTube por más de 5 años. Ayudo a captar la atención mediante el diseño.", years_exp: "Años<br>Exp.", projects_done: "Proyectos<br>Hechos", total_views: "Vistas<br>Totales", pay_1click: "Pedir en 1 click", stripe_secure: "Pago seguro con Stripe", success_title: "¡Pago exitoso!", success_desc: "¡Gracias por su pedido! Hemos recibido su pago y nos pondremos en contacto con usted por Telegram o correo electrónico en 2 horas para comenzar a trabajar.", success_close: "Cerrar", standard_plan: "Estándar", pro_plan: "Pro", standard_quality: "Calidad Estándar", recommended: "Recomendado", unlimited_month: "Ilimitado / Mes", whats_included: "Qué incluye", concept_per_piece: "1 concepto por miniatura", concepts_per_piece: "2 conceptos (Perfecto para pruebas A/B)", revisions_3: "3 revisiones por miniatura", revisions_6: "6 revisiones por miniatura", delivery_standard: "Entrega en 24-72 horas", delivery_pro: "Entrega en 6-24 horas", priority_support: "Soporte prioritario 24 horas", higher_quality: "Mayor calidad de producción", order_standard: "Pedir Estándar", order_pro: "Pedir Pro", need_invoice: "¿Necesita pago por factura? Contácteme", pro_concept_desc: "2 conceptos para 1 video" },
+            de: { portfolio: "Portfolio", price_info: "Preise & Info", about_me: "Über mich", before_after: "Vorher / Nachher", contact: "Kontakt", order_now: "JETZT BESTELLEN", start: "Start", pricing: "Preise", faq: "FAQ", from: "Ab", per_thumb: "Pro Thumbnail", final_price: "Endpreis nach Briefing", revisions: "3 kostenlose Revisionen", start_project: "Projekt starten", get_started_desc: "Bereiten Sie dies vor:", channel_link: "Kanal-Link", brief_ideas: "Briefing & Ideen", assets_refs: "Assets & Referenzen", deadline: "Deadline", more_details: "Je mehr Details, desto besser.", faq1_q: "Standard vs. Pro: Was ist der Unterschied?", faq1_a: "Der Pro-Tarif bietet 2 Konzepte für A/B-Tests, Prioritätslieferung (6-24 Std.), 24/7 Support, mehr Revisionen (6 statt 3) und eine höhere Produktionsqualität.", faq2_q: "Lieferzeit?", faq2_a: "Die Standard-Lieferzeit beträgt 24-72 Std. Pro-Lieferung erfolgt prioritär innerhalb von 6-24 Std.", faq3_q: "Wie funktionieren Paketbestellungen?", faq3_a: "Sie wählen einen Tarif (Standard oder Pro), kaufen ein Paket von Thumbnails (4, 8, 10 oder Unbegrenzt) über Stripe, und wir kontaktieren Sie innerhalb von 2 Stunden per Telegram oder E-Mail.", about_desc: "Ich erstelle seit über 5 Jahren YouTube-Thumbnails. Ich helfe, Aufmerksamkeit durch Design zu gewinnen.", years_exp: "Jahre<br>Erf.", projects_done: "Projekte<br>Fertig", total_views: "Gesamtansichten", pay_1click: "In 1 Klick bestellen", stripe_secure: "Sicher bezahlen mit Stripe", success_title: "Zahlung erfolgreich!", success_desc: "Vielen Dank für Ihre Bestellung! Wir haben Ihre Zahlung erhalten und werden Sie innerhalb von 2 Stunden per Telegram oder E-Mail kontaktieren, um mit der Arbeit an Ihrem Projekt zu beginnen.", success_close: "Schließen", standard_plan: "Standard", pro_plan: "Pro", standard_quality: "Standardqualität", recommended: "Empfohlen", unlimited_month: "Unbegrenzt / Monat", whats_included: "Was ist enthalten", concept_per_piece: "1 Konzept pro Thumbnail", concepts_per_piece: "2 Konzepte (Perfekt für A/B-Tests)", revisions_3: "3 Revisionen pro Thumbnail", revisions_6: "6 Revisionen pro Thumbnail", delivery_standard: "Lieferung innerhalb von 24-72 Std.", delivery_pro: "Lieferung innerhalb von 6-24 Std.", priority_support: "24-Stunden-Prioritätssupport", higher_quality: "Höhere Produktionsqualität", order_standard: "Standard bestellen", order_pro: "Pro bestellen", need_invoice: "Rechnung benötigt? Kontaktieren Sie mich", pro_concept_desc: "2 Konzepte für 1 Video" }
         };
 
         function setLanguage(lang) {
@@ -1114,6 +1217,33 @@
 
         const savedLang = localStorage.getItem('preferred_lang') || 'en';
         setLanguage(savedLang);
+
+        // Check for Stripe success URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            const successModal = document.getElementById('success-modal');
+            if (successModal) {
+                successModal.style.display = 'flex';
+                // Remove success parameter from URL without reloading page
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+            }
+        }
     </script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-[300] hidden items-center justify-center p-4 select-none pointer-events-auto">
+        <div class="bg-white/[0.03] border border-white/10 rounded-[2.5rem] p-8 md:p-12 max-w-md w-full text-center relative shadow-2xl">
+            <button onclick="document.getElementById('success-modal').style.display = 'none'" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <div class="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-8 border border-white/10">
+                <i data-lucide="check" class="w-10 h-10 text-white animate-bounce-subtle"></i>
+            </div>
+            <h3 class="font-brand text-3xl font-black uppercase italic tracking-wider mb-4" data-t="success_title">Payment Successful!</h3>
+            <p class="text-white/60 text-sm md:text-base leading-relaxed mb-8" data-t="success_desc">Thank you for your order! We have received your payment and will contact you via Telegram or Email within 2 hours to start working on your project.</p>
+            <button onclick="document.getElementById('success-modal').style.display = 'none'" class="w-full bg-white text-black py-4 rounded-2xl font-black uppercase text-sm hover:scale-[1.02] active:scale-[0.98] transition-all" data-t="success_close">Close</button>
+        </div>
+    </div>
 </body>
 </html>

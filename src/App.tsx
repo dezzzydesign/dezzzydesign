@@ -104,7 +104,7 @@ function App() {
           <img src={logo} alt="Logo" className="w-8 h-8" />
           <span className="font-bold text-xl tracking-tighter">DEZZZY</span>
         </div>
-        <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm">ORDER NOW</a>
+        <a href="https://buy.stripe.com/cNi8wI6ES1noe1A8P74ZG01" target="_blank" className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm">ORDER NOW</a>
       </nav>
 
       {/* Hero */}
@@ -113,7 +113,7 @@ function App() {
         <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter mb-4">DEZZZY</h1>
         <p className="text-white/50 text-lg max-w-xl mb-10">HIGH-CONVERSION YOUTUBE THUMBNAILS</p>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="https://forms.gle/wt6W6S7f8u63cThw9" target="_blank" className="bg-white text-black px-10 py-4 rounded-xl font-black text-xl flex items-center gap-2">
+          <a href="https://buy.stripe.com/cNi8wI6ES1noe1A8P74ZG01" target="_blank" className="bg-white text-black px-10 py-4 rounded-xl font-black text-xl flex items-center gap-2">
             ORDER NOW <ChevronRight />
           </a>
           <div className="flex gap-2">
