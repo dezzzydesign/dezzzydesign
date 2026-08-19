@@ -436,28 +436,28 @@
                     </button>
                     <div class="absolute right-0 top-full pt-4 hidden group-hover:block z-[120]">
                         <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex flex-col gap-1 min-w-[80px] shadow-2xl">
-                            <button onclick="setLanguage('en')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="en">🇬🇧 EN</button>
-                            <button onclick="setLanguage('ru')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="ru">🇷🇺 RU</button>
-                            <button onclick="setLanguage('ua')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="ua">🇺🇦 UA</button>
-                            <button onclick="setLanguage('es')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="es">🇪🇸 ES</button>
-                            <button onclick="setLanguage('de')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="de">🇩🇪 DE</button>
+                            <button onclick="setLanguage('en')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 object-cover rounded-sm" alt="EN"> EN</button>
+                            <button onclick="setLanguage('ru')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="ru"><img src="https://flagcdn.com/w20/ru.png" class="w-4 h-3 object-cover rounded-sm" alt="RU"> RU</button>
+                            <button onclick="setLanguage('ua')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="ua"><img src="https://flagcdn.com/w20/ua.png" class="w-4 h-3 object-cover rounded-sm" alt="UA"> UA</button>
+                            <button onclick="setLanguage('es')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="es"><img src="https://flagcdn.com/w20/es.png" class="w-4 h-3 object-cover rounded-sm" alt="ES"> ES</button>
+                            <button onclick="setLanguage('de')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="de"><img src="https://flagcdn.com/w20/de.png" class="w-4 h-3 object-cover rounded-sm" alt="DE"> DE</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Mobile Language Switcher (Visible only on Mobile) -->
                 <div class="lg:hidden relative">
-                    <button onclick="toggleMobileLang()" class="flex items-center gap-1 p-2 opacity-50 hover:opacity-100 transition-all">
+                    <button onclick="toggleMobileLang()" class="flex items-center gap-1.5 p-2 opacity-50 hover:opacity-100 transition-all">
                         <i data-lucide="languages" class="w-5 h-5"></i>
-                        <span class="current-lang-text text-[10px] font-black uppercase">🇬🇧 EN</span>
+                        <span class="current-lang-text text-[10px] font-black uppercase flex items-center gap-1"><img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 object-cover rounded-sm" alt="EN"> EN</span>
                     </button>
                     <div id="mobile-lang-dropdown" class="absolute right-0 top-full mt-2 hidden z-[120]">
                         <div class="bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 flex flex-col gap-1 min-w-[70px] shadow-2xl">
-                            <button onclick="setLanguage('en'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left">🇬🇧 EN</button>
-                            <button onclick="setLanguage('ru'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left">🇷🇺 RU</button>
-                            <button onclick="setLanguage('ua'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left">🇺🇦 UA</button>
-                            <button onclick="setLanguage('es'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left">🇪🇸 ES</button>
-                            <button onclick="setLanguage('de'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left">🇩🇪 DE</button>
+                            <button onclick="setLanguage('en'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5"><img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 object-cover rounded-sm" alt="EN"> EN</button>
+                            <button onclick="setLanguage('ru'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5"><img src="https://flagcdn.com/w20/ru.png" class="w-4 h-3 object-cover rounded-sm" alt="RU"> RU</button>
+                            <button onclick="setLanguage('ua'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5"><img src="https://flagcdn.com/w20/ua.png" class="w-4 h-3 object-cover rounded-sm" alt="UA"> UA</button>
+                            <button onclick="setLanguage('es'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5"><img src="https://flagcdn.com/w20/es.png" class="w-4 h-3 object-cover rounded-sm" alt="ES"> ES</button>
+                            <button onclick="setLanguage('de'); toggleMobileLang();" class="px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5"><img src="https://flagcdn.com/w20/de.png" class="w-4 h-3 object-cover rounded-sm" alt="DE"> DE</button>
                         </div>
                     </div>
                 </div>
@@ -496,15 +496,15 @@
             <div class="relative group hidden sm:block">
                 <button class="flex items-center gap-2 text-[10px] md:text-xs font-black uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">
                     <i data-lucide="languages" class="w-4 h-4"></i>
-                    <span class="hero-current-lang">🇬🇧 EN</span>
+                    <span class="hero-current-lang flex items-center gap-1"><img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 object-cover rounded-sm" alt="EN"> EN</span>
                 </button>
                 <div class="absolute right-0 top-full pt-4 hidden group-hover:block z-[120]">
                     <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-2 flex flex-col gap-1 min-w-[80px] shadow-2xl">
-                        <button onclick="setLanguage('en')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="en">🇬🇧 EN</button>
-                        <button onclick="setLanguage('ru')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="ru">🇷🇺 RU</button>
-                        <button onclick="setLanguage('ua')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="ua">🇺🇦 UA</button>
-                        <button onclick="setLanguage('es')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="es">🇪🇸 ES</button>
-                        <button onclick="setLanguage('de')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left" data-lang="de">🇩🇪 DE</button>
+                        <button onclick="setLanguage('en')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="en"><img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 object-cover rounded-sm" alt="EN"> EN</button>
+                        <button onclick="setLanguage('ru')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="ru"><img src="https://flagcdn.com/w20/ru.png" class="w-4 h-3 object-cover rounded-sm" alt="RU"> RU</button>
+                        <button onclick="setLanguage('ua')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="ua"><img src="https://flagcdn.com/w20/ua.png" class="w-4 h-3 object-cover rounded-sm" alt="UA"> UA</button>
+                        <button onclick="setLanguage('es')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="es"><img src="https://flagcdn.com/w20/es.png" class="w-4 h-3 object-cover rounded-sm" alt="ES"> ES</button>
+                        <button onclick="setLanguage('de')" class="lang-btn px-4 py-2 text-[10px] font-black hover:bg-white/10 rounded-xl transition-all text-left flex items-center gap-1.5" data-lang="de"><img src="https://flagcdn.com/w20/de.png" class="w-4 h-3 object-cover rounded-sm" alt="DE"> DE</button>
                     </div>
                 </div>
             </div>
@@ -1186,11 +1186,11 @@
         };
 
         const langFlags = {
-            en: "🇬🇧",
-            ru: "🇷🇺",
-            ua: "🇺🇦",
-            es: "🇪🇸",
-            de: "🇩🇪"
+            en: "gb",
+            ru: "ru",
+            ua: "ua",
+            es: "es",
+            de: "de"
         };
 
         function setLanguage(lang) {
@@ -1199,11 +1199,12 @@
                 if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
             });
             const langCode = lang === 'de' ? 'DE' : lang.toUpperCase();
-            const flag = langFlags[lang] || '';
+            const flagCode = langFlags[lang];
+            const flagHtml = flagCode ? `<img src="https://flagcdn.com/w20/${flagCode}.png" class="w-4 h-3 object-cover rounded-sm inline-block mr-1 align-middle" style="margin-top: -2px;" alt="${langCode}"> ` : '';
             
             // Update all language text displays (sticky navbar, hero nav, mobile menu)
             document.querySelectorAll('.current-lang-text, #current-lang, .hero-current-lang').forEach(el => {
-                el.innerText = `${flag} ${langCode}`;
+                el.innerHTML = `${flagHtml}${langCode}`;
             });
 
             // Update active states on mobile lang buttons
