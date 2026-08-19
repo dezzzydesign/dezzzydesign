@@ -1299,6 +1299,11 @@
             });
             
             localStorage.setItem('preferred_lang', lang);
+            
+            // Track language change in Clarity
+            if (typeof clarity === 'function') {
+                clarity('event', 'change_language', { 'language': lang });
+            }
         }
 
         const animationObserver = new IntersectionObserver((entries) => {
